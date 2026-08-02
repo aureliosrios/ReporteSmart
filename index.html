@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Portales Independientes - Control RO Redes Sanitarias</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="dark-theme">
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <div>
+                <h1>Hub de Portales Independientes de Reportabilidad</h1>
+                <p class="subtitle">Habilitación Urbana Los Cedros | Acceso Celular por Rol (JSON Sync Base)</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="status-pill">
+                <span class="dot-live"></span>
+                <span>Base de Datos Unificada Activa</span>
+            </div>
+            <button id="btn-export-db" class="btn btn-outline">
+                <i class="fa-solid fa-file-export"></i> Exportar DB (JSON)
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="section-title-box text-center mt-2 mb-4">
+            <h2 style="font-size: 1.8rem;"><i class="fa-solid fa-users-viewfinder"></i> Selección de Portal por Rol de Usuario</h2>
+            <p style="font-size: 1rem;">Cada usuario ingresa exclusivamente al portal HTML independiente que le compete desde su celular o laptop:</p>
+        </div>
+
+        <!-- GRID DE ACCESO DIRECTO A LOS PORTALES INDEPENDIENTES -->
+        <div class="hub-grid">
+
+            <!-- 1. PORTAL TAREADOR -->
+            <a href="tareador.html" class="hub-card card-blue">
+                <div class="hub-card-icon">
+                    <i class="fa-solid fa-user-clock"></i>
+                </div>
+                <div class="hub-card-content">
+                    <h3>1. Portal del Tareador (Bildin)</h3>
+                    <p>Reporte exclusivo de Mano de Obra ($HH$) por categoría (*Capataz, Operario, Oficial, Peón*) asignando a 2 o más frentes WBS.</p>
+                    <span class="hub-badge">📱 Acceso Celular / Tablet</span>
+                </div>
+            </a>
+
+            <!-- 2. PORTAL ALMACENERO -->
+            <a href="almacenero.html" class="hub-card card-green">
+                <div class="hub-card-icon">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+                <div class="hub-card-content">
+                    <h3>2. Portal del Almacenero</h3>
+                    <p>Despacho de insumos de la base de datos JSON de materiales asignados a múltiples frentes WBS en paralelo.</p>
+                    <span class="hub-badge">📦 Acceso Almacén / Celular</span>
+                </div>
+            </a>
+
+            <!-- 3. PORTAL ADMINISTRADORA -->
+            <a href="administradora.html" class="hub-card card-orange">
+                <div class="hub-card-icon">
+                    <i class="fa-solid fa-truck-monster"></i>
+                </div>
+                <div class="hub-card-content">
+                    <h3>3. Portal de la Administradora</h3>
+                    <p>Control de Horas Máquina (HM) y servicios de terceros de la base JSON asignados a los Nodos WBS.</p>
+                    <span class="hub-badge">🚜 Acceso Administración</span>
+                </div>
+            </a>
+
+            <!-- 4. PORTAL ING. CAMPO -->
+            <a href="ing_campo.html" class="hub-card card-purple">
+                <div class="hub-card-icon">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                </div>
+                <div class="hub-card-content">
+                    <h3>4. Portal del Ing. de Campo</h3>
+                    <p>Reporte diario de producción y metrados ejecutados ($EV$) con unidades explícitas ($m, m^3, und, glb$).</p>
+                    <span class="hub-badge">👷‍♀️ Acceso Producción Campo</span>
+                </div>
+            </a>
+
+            <!-- 5. DASHBOARD CENTRAL RO -->
+            <a href="dashboard_ro.html" class="hub-card card-gold">
+                <div class="hub-card-icon">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="hub-card-content">
+                    <h3>5. Dashboard RO & Agente IA</h3>
+                    <p>Sala de control central para el Residente e Ing. de OT: EVM ($PV, EV, AC, CPI, SPI$), cuantificación por WBS y diagnóstico IA.</p>
+                    <span class="hub-badge">📊 Acceso Residencia & OT</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Hub de Portales Independientes | Redes Sanitarias de Habilitación Urbana © 2026</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
