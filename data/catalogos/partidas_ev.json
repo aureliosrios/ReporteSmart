@@ -1,0 +1,90 @@
+[
+  {
+    "codigo_partida": "01.01",
+    "descripcion": "Obras Preliminares y Trabajos Provisionales",
+    "unidad": "GLB",
+    "metrado_meta": 1,
+    "precio_unitario_meta": 8296.4,
+    "costo_total_meta": 8296.4
+  },
+  {
+    "codigo_partida": "01.02.01",
+    "descripcion": "Trazo, Nivelación y Replanteo de Zanjas",
+    "unidad": "M",
+    "metrado_meta": 2400,
+    "precio_unitario_meta": 3.35,
+    "costo_total_meta": 8040
+  },
+  {
+    "codigo_partida": "01.02.02",
+    "descripcion": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+    "unidad": "M3",
+    "metrado_meta": 3840,
+    "precio_unitario_meta": 11.66,
+    "costo_total_meta": 44774.4
+  },
+  {
+    "codigo_partida": "01.02.03",
+    "descripcion": "Preparación y Colocación de Cama de Arena e=0.10m",
+    "unidad": "M",
+    "metrado_meta": 2400,
+    "precio_unitario_meta": 11.12,
+    "costo_total_meta": 26688
+  },
+  {
+    "codigo_partida": "01.02.04",
+    "descripcion": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+    "unidad": "M",
+    "metrado_meta": 1400,
+    "precio_unitario_meta": 55.51,
+    "costo_total_meta": 77714
+  },
+  {
+    "codigo_partida": "01.02.05",
+    "descripcion": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+    "unidad": "M3",
+    "metrado_meta": 3300,
+    "precio_unitario_meta": 28.54,
+    "costo_total_meta": 94182
+  },
+  {
+    "codigo_partida": "01.02.06",
+    "descripcion": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+    "unidad": "UND",
+    "metrado_meta": 32,
+    "precio_unitario_meta": 2500.73,
+    "costo_total_meta": 80023.36
+  },
+  {
+    "codigo_partida": "01.02.07",
+    "descripcion": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+    "unidad": "UND",
+    "metrado_meta": 120,
+    "precio_unitario_meta": 405.54,
+    "costo_total_meta": 48664.8
+  },
+  {
+    "codigo_partida": "01.03.01",
+    "descripcion": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+    "unidad": "M",
+    "metrado_meta": 1000,
+    "precio_unitario_meta": 38.76,
+    "costo_total_meta": 38760
+  },
+  {
+    "codigo_partida": "01.03.02",
+    "descripcion": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+    "unidad": "UND",
+    "metrado_meta": 120,
+    "precio_unitario_meta": 156.71,
+    "costo_total_meta": 18805.2
+  },
+  {
+    "codigo_partida": "01.04.01",
+    "descripcion": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+    "unidad": "GLB",
+    "metrado_meta": 1,
+    "precio_unitario_meta": 9348.06,
+    "costo_total_meta": 9348.06
+  }
+]

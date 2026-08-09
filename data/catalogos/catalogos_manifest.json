@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "uso": "Catálogos consumidos por los portales HTML",
+  "archivos": {
+    "wbs": "wbs.json",
+    "mano_obra": "recursos_mano_obra.json",
+    "almacenero": "recursos_almacen.json",
+    "equipos_servicios": "recursos_equipos_servicios.json",
+    "partidas_ev": "partidas_ev.json"
+  }
+}

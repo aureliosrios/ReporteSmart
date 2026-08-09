@@ -1,0 +1,92 @@
+{
+  "MAT_ESTACA": {
+    "desc": "ESTACAS Y MADERA PARA TRAZO",
+    "unit": "pza",
+    "precio": 4.5
+  },
+  "MAT_PINTURA": {
+    "desc": "PINTURA SPRAY MARCADOR DE ZANJA",
+    "unit": "gla",
+    "precio": 18
+  },
+  "MAT_CORDEL": {
+    "desc": "CORDEL / NYLON",
+    "unit": "m",
+    "precio": 0.8
+  },
+  "MAT_ARENA_CAMAS": {
+    "desc": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+    "unit": "m3",
+    "precio": 45
+  },
+  "MAT_TUB_PVC_200": {
+    "desc": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+    "unit": "m",
+    "precio": 42
+  },
+  "MAT_LUBRICANTE": {
+    "desc": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+    "unit": "kg",
+    "precio": 24
+  },
+  "MAT_MATERIAL_PR": {
+    "desc": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+    "unit": "m3",
+    "precio": 38
+  },
+  "MAT_AGUA": {
+    "desc": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+    "unit": "m3",
+    "precio": 12
+  },
+  "MAT_BUZON_PREF": {
+    "desc": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+    "unit": "und",
+    "precio": 1050
+  },
+  "MAT_CAJA_REGISTRO": {
+    "desc": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+    "unit": "und",
+    "precio": 145
+  },
+  "MAT_TUB_PVC_160_CONEX": {
+    "desc": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+    "unit": "m",
+    "precio": 22
+  },
+  "MAT_TUB_PVC_110_AGUA": {
+    "desc": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+    "unit": "m",
+    "precio": 26.5
+  },
+  "MAT_ACCESORIOS_AGUA": {
+    "desc": "ACCESORIOS Y CODOS PVC AGUA 110MM (PROMEDIO/M)",
+    "unit": "glb",
+    "precio": 5
+  },
+  "MAT_CAJA_AGUA": {
+    "desc": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+    "unit": "und",
+    "precio": 62
+  },
+  "MAT_TUB_HDPE_1_2": {
+    "desc": "TUBERIA HDPE 1/2 PARA ACOMETIDA AGUA",
+    "unit": "m",
+    "precio": 3.8
+  },
+  "MAT_HIPOCLORITO": {
+    "desc": "HIPOCLORITO DE CALCIO 70% PARA DESINFECCION",
+    "unit": "kg",
+    "precio": 35
+  },
+  "MAT_CARTEL": {
+    "desc": "CARTEL DE OBRA 3.60X2.40M",
+    "unit": "und",
+    "precio": 1200
+  },
+  "MAT_CASETA": {
+    "desc": "CASETA DE ALMACEN Y OFICINA PROVISIONAL",
+    "unit": "glb",
+    "precio": 2300
+  }
+}

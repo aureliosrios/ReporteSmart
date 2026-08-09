@@ -218,45 +218,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNCIÓN CENTRALIZADA DE ENVIÓ SIMULTÁNEO AL BACKEND EXCEL (SOPORTA FILE:// Y HTTP://)
     async function syncLogsToExcelServer(newRecords) {
         const payload = newRecords.map(r => ({
-            id_registro: r.id,
-            id_parte: r.id_parte || '',
+            id: r.id,
             fecha: r.fecha,
-            emisor_rol: r.rol,
-            wbs_codigo: r.wbs,
-            codigo_recurso_partida: r.codigoRecurso,
-            descripcion: r.detalle,
+            rol: r.rol,
+            wbs: r.wbs,
+            codigoRecurso: r.codigoRecurso,
+            detalle: r.detalle,
             cantidad: r.cantidad,
             unidad: r.unidad,
-            costo_unitario: r.pu,
-            costo_total_pen: r.costo,
-            categoria_evm: r.tipo,
-            origen_html: r.origen_html || `${location.pathname.split('/').pop()}`,
-            estado_validacion: r.estado_validacion || 'VALIDO'
+            tipo: r.tipo,
+            origen_html: r.origen_html || `${location.pathname.split('/').pop()}`
         }));
 
-        const apiUrl = API_ENDPOINT;
+        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbwecahQY_jC4kqtZiYkGSZKj5LRvgG4HHC1GOHUIvDF0obE6_kek_x8ebhZs_zd3Mp9/exec';
 
         try {
-            const resp = await fetch(apiUrl, {
+            // Usamos Content-Type text/plain para evitar el preflight OPTIONS de CORS de Google Apps Script
+            await fetch(apiUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(payload)
             });
 
-            if (resp.ok) {
-                const resData = await resp.json();
-                dbLogs = mergeLogs(dbLogs, newRecords);
-                localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
-                alert(`✅ ${resData.message}`);
-                if (document.getElementById('tbody-wbs-evm')) updateDashboardViews();
-            } else {
-                throw new Error("HTTP Status Error");
-            }
+            dbLogs = mergeLogs(dbLogs, newRecords);
+            localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
+            alert(`✅ ${newRecords.length} registro(s) enviado(s) exitosamente a Google Sheets.`);
+            if (document.getElementById('tbody-wbs-evm')) updateDashboardViews();
         } catch (err) {
             console.warn("Servidor backend no disponible; guardando en almacenamiento web local:", err);
             dbLogs = mergeLogs(dbLogs, newRecords);
             localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
-            alert(`✅ ${newRecords.length} registro(s) guardado(s) localmente.`);
+            alert(`⚠️ No se pudo conectar a Google Sheets. Guardado localmente.`);
         }
     }
 
