@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Administradora - Maquinaria y Subcontratos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="dark-theme">
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge" style="background: linear-gradient(135deg, #ea580c, #c2410c);">
+                <i class="fa-solid fa-truck-monster"></i>
+            </div>
+            <div>
+                <h1>Portal de la Administradora</h1>
+                <p class="subtitle">Control de Horas Máquina (HM) y Servicios por Frente WBS</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> Hub Principal</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="card glass-card">
+            <div class="form-header header-orange flex-between">
+                <div class="flex-align">
+                    <i class="fa-solid fa-tractor"></i>
+                    <div>
+                        <h3>Partes Diarios de Maquinaria y Subcontratos</h3>
+                        <p>Imputación de equipos y servicios de terceros a los Nodos WBS</p>
+                    </div>
+                </div>
+                <div class="form-date-box">
+                    <label><i class="fa-regular fa-calendar"></i> Fecha:</label>
+                    <input type="date" id="form-date-admin" class="form-control date-picker" required>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table input-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Frente WBS Asignado</th>
+                            <th style="width: 45%;">Equipo / Servicio (Base JSON)</th>
+                            <th style="width: 15%;">Cantidad (HM / Und)</th>
+                            <th style="width: 10%;">Tarifa Meta</th>
+                            <th style="width: 5%;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows-admin-only">
+                        <!-- Filas dinámicas -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-actions mt-4 flex-between">
+                <button type="button" id="btn-add-row-admin" class="btn btn-secondary btn-lg">
+                    <i class="fa-solid fa-plus"></i> + Agregar Equipo / Servicio
+                </button>
+                <div class="info-summary-pill" id="summary-admin-only">
+                    Total Equipos: <strong>S/ 0.00</strong>
+                </div>
+                <button type="button" id="btn-save-admin" class="btn btn-primary btn-lg">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Guardar Partes de Maquinaria
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Portal Independiente de la Administradora | Redes Sanitarias de Habilitación Urbana © 2026</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

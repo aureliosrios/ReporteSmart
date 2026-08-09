@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Ing. de Campo - Avance Físico y EV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="dark-theme">
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge" style="background: linear-gradient(135deg, #7e22ce, #6b21a8);">
+                <i class="fa-solid fa-helmet-safety"></i>
+            </div>
+            <div>
+                <h1>Portal del Ingeniero de Campo</h1>
+                <p class="subtitle">Reporte Diario de Producción y Metrados Ejecutados (Valor Ganado $EV$)</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> Hub Principal</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="card glass-card">
+            <div class="form-header header-purple flex-between">
+                <div class="flex-align">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <h3>Partes Diarios de Avance Físico por Partida</h3>
+                        <p>Medición de metrados reales ejecutados con unidades explícitas ($m, m^3, und, glb$)</p>
+                    </div>
+                </div>
+                <div class="form-date-box">
+                    <label><i class="fa-regular fa-calendar"></i> Fecha:</label>
+                    <input type="date" id="form-date-campo" class="form-control date-picker" required>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table input-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 22%;">Frente WBS</th>
+                            <th style="width: 38%;">Partida Presupuestal (Base JSON)</th>
+                            <th style="width: 20%;">Tramo / Ubicación</th>
+                            <th style="width: 10%;">Metrado</th>
+                            <th style="width: 5%;">Unidad</th>
+                            <th style="width: 5%;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows-campo-only">
+                        <!-- Filas dinámicas -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-actions mt-4 flex-between">
+                <button type="button" id="btn-add-row-campo" class="btn btn-secondary btn-lg">
+                    <i class="fa-solid fa-plus"></i> + Agregar Partida EV
+                </button>
+                <div class="info-summary-pill" id="summary-campo-only">
+                    Total Valor Ganado ($EV$): <strong>S/ 0.00</strong>
+                </div>
+                <button type="button" id="btn-save-campo" class="btn btn-primary btn-lg">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Guardar Avance Físico
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Portal Independiente del Ingeniero de Campo | Redes Sanitarias de Habilitación Urbana © 2026</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

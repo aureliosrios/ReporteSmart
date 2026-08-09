@@ -1,0 +1,18 @@
+[
+  {
+    "codigo": "WBS-100",
+    "nombre": "Obras Preliminares, Trazo y Movilización"
+  },
+  {
+    "codigo": "WBS-200",
+    "nombre": "Red de Alcantarillado, Zanjas y Buzones"
+  },
+  {
+    "codigo": "WBS-300",
+    "nombre": "Red de Agua Potable y Conexiones Domiciliarias"
+  },
+  {
+    "codigo": "WBS-400",
+    "nombre": "Pruebas Hidráulicas, Desinfección y Entrega"
+  }
+]

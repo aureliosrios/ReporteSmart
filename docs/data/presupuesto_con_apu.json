@@ -1,0 +1,1227 @@
+{
+  "proyecto": {
+    "nombre": "Redes Sanitarias de Agua Potable y Alcantarillado - Habilitación Urbana Los Cedros",
+    "tipo_presupuesto": "Comercial / Licitación",
+    "duracion_semanas": 8,
+    "duracion_dias_calendario": 60,
+    "moneda": "PEN",
+    "jornal_estandar_hh": 8.0
+  },
+  "resumen_financiero_comercial": {
+    "costo_directo_total": 386600.0,
+    "gastos_generales_pct": 10.0,
+    "gastos_generales_monto": 38660.0,
+    "utilidad_pct": 8.0,
+    "utilidad_monto": 30928.0,
+    "valor_venta_subtotal_sin_igv": 456188.0,
+    "igv_pct": 18.0,
+    "igv_monto": 82113.84,
+    "precio_total_comercial_con_igv": 538301.84
+  },
+  "precios_recursos_maestros": {
+    "mano_obra": {
+      "MO_CAPATAZ": {
+        "desc": "CAPATAZ",
+        "unit": "hh",
+        "precio": 32.5
+      },
+      "MO_OPERARIO": {
+        "desc": "OPERARIO",
+        "unit": "hh",
+        "precio": 26.8
+      },
+      "MO_OFICIAL": {
+        "desc": "OFICIAL",
+        "unit": "hh",
+        "precio": 22.4
+      },
+      "MO_PEON": {
+        "desc": "PEON",
+        "unit": "hh",
+        "precio": 20.1
+      }
+    },
+    "materiales": {
+      "MAT_ESTACA": {
+        "desc": "ESTACAS Y MADERA PARA TRAZO",
+        "unit": "pza",
+        "precio": 4.5
+      },
+      "MAT_PINTURA": {
+        "desc": "PINTURA SPRAY MARCADOR DE ZANJA",
+        "unit": "gla",
+        "precio": 18.0
+      },
+      "MAT_CORDEL": {
+        "desc": "CORDEL / NYLON",
+        "unit": "m",
+        "precio": 0.8
+      },
+      "MAT_ARENA_CAMAS": {
+        "desc": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+        "unit": "m3",
+        "precio": 45.0
+      },
+      "MAT_TUB_PVC_200": {
+        "desc": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+        "unit": "m",
+        "precio": 42.0
+      },
+      "MAT_LUBRICANTE": {
+        "desc": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+        "unit": "kg",
+        "precio": 24.0
+      },
+      "MAT_MATERIAL_PR": {
+        "desc": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+        "unit": "m3",
+        "precio": 38.0
+      },
+      "MAT_AGUA": {
+        "desc": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+        "unit": "m3",
+        "precio": 12.0
+      },
+      "MAT_BUZON_PREF": {
+        "desc": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+        "unit": "und",
+        "precio": 1050.0
+      },
+      "MAT_CAJA_REGISTRO": {
+        "desc": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+        "unit": "und",
+        "precio": 145.0
+      },
+      "MAT_TUB_PVC_160_CONEX": {
+        "desc": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+        "unit": "m",
+        "precio": 22.0
+      },
+      "MAT_TUB_PVC_110_AGUA": {
+        "desc": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+        "unit": "m",
+        "precio": 26.5
+      },
+      "MAT_ACCESORIOS_AGUA": {
+        "desc": "ACCESORIOS Y CODOS PVC AGUA 110MM (PROMEDIO/M)",
+        "unit": "glb",
+        "precio": 5.0
+      },
+      "MAT_CAJA_AGUA": {
+        "desc": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+        "unit": "und",
+        "precio": 62.0
+      },
+      "MAT_TUB_HDPE_1_2": {
+        "desc": "TUBERIA HDPE 1/2 PARA ACOMETIDA AGUA",
+        "unit": "m",
+        "precio": 3.8
+      },
+      "MAT_HIPOCLORITO": {
+        "desc": "HIPOCLORITO DE CALCIO 70% PARA DESINFECCION",
+        "unit": "kg",
+        "precio": 35.0
+      },
+      "MAT_CARTEL": {
+        "desc": "CARTEL DE OBRA 3.60X2.40M",
+        "unit": "und",
+        "precio": 1200.0
+      },
+      "MAT_CASETA": {
+        "desc": "CASETA DE ALMACEN Y OFICINA PROVISIONAL",
+        "unit": "glb",
+        "precio": 2300.0
+      }
+    },
+    "equipos": {
+      "EQ_HERRAMIENTAS": {
+        "desc": "HERRAMIENTAS MANUALES",
+        "unit": "%MO",
+        "precio": 0.0
+      },
+      "EQ_EXCAVADORA": {
+        "desc": "EXCAVADORA SOBRE ORUGAS 140 HP",
+        "unit": "hm",
+        "precio": 185.0
+      },
+      "EQ_RETROEXCAVADORA": {
+        "desc": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+        "unit": "hm",
+        "precio": 130.0
+      },
+      "EQ_PLANCHA": {
+        "desc": "PLANCHA COMPACTADORA 7 HP",
+        "unit": "hm",
+        "precio": 25.0
+      },
+      "EQ_RODILLO_CAMINANTE": {
+        "desc": "RODILLO VIBRATORIO CAMINANTE 1.5 TN",
+        "unit": "hm",
+        "precio": 45.0
+      },
+      "EQ_CAMION_CISTERNA": {
+        "desc": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+        "unit": "hm",
+        "precio": 140.0
+      },
+      "EQ_CAMION_GRUAN": {
+        "desc": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+        "unit": "hm",
+        "precio": 160.0
+      },
+      "EQ_BOMBA_PRUEBA": {
+        "desc": "BOMBA HIDROSTÁTICA DE PRUEBA DE PRESIÓN",
+        "unit": "hm",
+        "precio": 30.0
+      },
+      "EQ_ESTACION_TOTAL": {
+        "desc": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+        "unit": "hm",
+        "precio": 18.0
+      }
+    },
+    "subcontratos": {
+      "SUB_MOVILIZACION": {
+        "desc": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+        "unit": "glb",
+        "precio": 4000.0
+      },
+      "SUB_ENSAYOS_COMPAC": {
+        "desc": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+        "unit": "und",
+        "precio": 80.0
+      },
+      "SUB_MONTAJE_BUZON": {
+        "desc": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+        "unit": "und",
+        "precio": 250.0
+      },
+      "SUB_PRUEBA_LAB": {
+        "desc": "SUBCONTRATO PRUEBAS DE LABORATORIO DE AGUA (BACTERIOLOGICO/FISICOQUIMICO)",
+        "unit": "glb",
+        "precio": 3800.0
+      }
+    }
+  },
+  "analisis_precios_unitarios": [
+    {
+      "item": "01.01",
+      "descripcion": "Obras Preliminares y Trabajos Provisionales",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "rendimiento": 1.0,
+      "subtotales": {
+        "subtotal_mano_obra": 773.2,
+        "subtotal_materiales": 3500.0,
+        "subtotal_equipos_subcontratos": 4023.2
+      },
+      "precio_unitario_directo": 8296.4,
+      "costo_total_partida_directo": 8296.4,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.5,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 32.5,
+          "parcial": 130.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 4.0,
+          "jornal": 8.0,
+          "aporte_unitario": 32.0,
+          "precio": 20.1,
+          "parcial": 643.2,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_CARTEL",
+          "descripcion": "CARTEL DE OBRA 3.60X2.40M",
+          "unidad": "und",
+          "cantidad": 1.0,
+          "precio": 1200.0,
+          "parcial": 1200.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_CASETA",
+          "descripcion": "CASETA DE ALMACEN Y OFICINA PROVISIONAL",
+          "unidad": "glb",
+          "cantidad": 1.0,
+          "precio": 2300.0,
+          "parcial": 2300.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 773.2,
+          "parcial": 23.2,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": [
+        {
+          "recurso_id": "SUB_MOVILIZACION",
+          "descripcion": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+          "unidad": "glb",
+          "cantidad": 1.0,
+          "precio": 4000.0,
+          "parcial": 4000.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ]
+    },
+    {
+      "item": "01.02.01",
+      "descripcion": "Trazo, Nivelación y Replanteo de Zanjas",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "rendimiento": 250.0,
+      "subtotales": {
+        "subtotal_mano_obra": 2.36,
+        "subtotal_materiales": 0.34,
+        "subtotal_equipos_subcontratos": 0.65
+      },
+      "precio_unitario_directo": 3.35,
+      "costo_total_partida_directo": 8040.0,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0064,
+          "precio": 32.5,
+          "parcial": 0.21,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.032,
+          "precio": 26.8,
+          "parcial": 0.86,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 2.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.064,
+          "precio": 20.1,
+          "parcial": 1.29,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_ESTACA",
+          "descripcion": "ESTACAS Y MADERA PARA TRAZO",
+          "unidad": "pza",
+          "cantidad": 0.05,
+          "precio": 4.5,
+          "parcial": 0.23,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_PINTURA",
+          "descripcion": "PINTURA SPRAY MARCADOR DE ZANJA",
+          "unidad": "gla",
+          "cantidad": 0.004,
+          "precio": 18.0,
+          "parcial": 0.07,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_CORDEL",
+          "descripcion": "CORDEL / NYLON",
+          "unidad": "m",
+          "cantidad": 0.05,
+          "precio": 0.8,
+          "parcial": 0.04,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_ESTACION_TOTAL",
+          "descripcion": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.032,
+          "precio": 18.0,
+          "parcial": 0.58,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 2.36,
+          "parcial": 0.07,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.02.02",
+      "descripcion": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+      "unidad": "M3",
+      "metrado": 3840.0,
+      "rendimiento": 160.0,
+      "subtotales": {
+        "subtotal_mano_obra": 2.34,
+        "subtotal_materiales": 0.0,
+        "subtotal_equipos_subcontratos": 9.32
+      },
+      "precio_unitario_directo": 11.66,
+      "costo_total_partida_directo": 44774.4,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.01,
+          "precio": 32.5,
+          "parcial": 0.33,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 2.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.1,
+          "precio": 20.1,
+          "parcial": 2.01,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [],
+      "equipos": [
+        {
+          "recurso_id": "EQ_EXCAVADORA",
+          "descripcion": "EXCAVADORA SOBRE ORUGAS 140 HP",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.05,
+          "precio": 185.0,
+          "parcial": 9.25,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 2.34,
+          "parcial": 0.07,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.02.03",
+      "descripcion": "Preparación y Colocación de Cama de Arena e=0.10m",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "rendimiento": 120.0,
+      "subtotales": {
+        "subtotal_mano_obra": 4.24,
+        "subtotal_materiales": 6.75,
+        "subtotal_equipos_subcontratos": 0.13
+      },
+      "precio_unitario_directo": 11.12,
+      "costo_total_partida_directo": 26688.0,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.1,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0067,
+          "precio": 32.5,
+          "parcial": 0.22,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 3.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.2,
+          "precio": 20.1,
+          "parcial": 4.02,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_ARENA_CAMAS",
+          "descripcion": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+          "unidad": "m3",
+          "cantidad": 0.15,
+          "precio": 45.0,
+          "parcial": 6.75,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 4.24,
+          "parcial": 0.13,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.02.04",
+      "descripcion": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+      "unidad": "M",
+      "metrado": 1400.0,
+      "rendimiento": 80.0,
+      "subtotales": {
+        "subtotal_mano_obra": 11.6,
+        "subtotal_materiales": 43.56,
+        "subtotal_equipos_subcontratos": 0.35
+      },
+      "precio_unitario_directo": 55.51,
+      "costo_total_partida_directo": 77714.0,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.02,
+          "precio": 32.5,
+          "parcial": 0.65,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.1,
+          "precio": 26.8,
+          "parcial": 2.68,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OFICIAL",
+          "descripcion": "OFICIAL",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.1,
+          "precio": 22.4,
+          "parcial": 2.24,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 3.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.3,
+          "precio": 20.1,
+          "parcial": 6.03,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_TUB_PVC_200",
+          "descripcion": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+          "unidad": "m",
+          "cantidad": 1.02,
+          "precio": 42.0,
+          "parcial": 42.84,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_LUBRICANTE",
+          "descripcion": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+          "unidad": "kg",
+          "cantidad": 0.03,
+          "precio": 24.0,
+          "parcial": 0.72,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 11.6,
+          "parcial": 0.35,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.02.05",
+      "descripcion": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+      "unidad": "M3",
+      "metrado": 3300.0,
+      "rendimiento": 110.0,
+      "subtotales": {
+        "subtotal_mano_obra": 6.81,
+        "subtotal_materiales": 13.78,
+        "subtotal_equipos_subcontratos": 7.95
+      },
+      "precio_unitario_directo": 28.54,
+      "costo_total_partida_directo": 94182.0,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0145,
+          "precio": 32.5,
+          "parcial": 0.47,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0727,
+          "precio": 26.8,
+          "parcial": 1.95,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 3.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.2182,
+          "precio": 20.1,
+          "parcial": 4.39,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_MATERIAL_PR",
+          "descripcion": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+          "unidad": "m3",
+          "cantidad": 0.35,
+          "precio": 38.0,
+          "parcial": 13.3,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_AGUA",
+          "descripcion": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+          "unidad": "m3",
+          "cantidad": 0.04,
+          "precio": 12.0,
+          "parcial": 0.48,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_RETROEXCAVADORA",
+          "descripcion": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+          "unidad": "hm",
+          "cuadrilla": 0.5,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0364,
+          "precio": 130.0,
+          "parcial": 4.73,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_PLANCHA",
+          "descripcion": "PLANCHA COMPACTADORA 7 HP",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0727,
+          "precio": 25.0,
+          "parcial": 1.82,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 6.81,
+          "parcial": 0.2,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": [
+        {
+          "recurso_id": "SUB_ENSAYOS_COMPAC",
+          "descripcion": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+          "unidad": "und",
+          "cantidad": 0.015,
+          "precio": 80.0,
+          "parcial": 1.2,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ]
+    },
+    {
+      "item": "01.02.06",
+      "descripcion": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+      "unidad": "UND",
+      "metrado": 32.0,
+      "rendimiento": 2.0,
+      "subtotales": {
+        "subtotal_mano_obra": 544.4,
+        "subtotal_materiales": 1050.0,
+        "subtotal_equipos_subcontratos": 906.33
+      },
+      "precio_unitario_directo": 2500.73,
+      "costo_total_partida_directo": 80023.36,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.8,
+          "precio": 32.5,
+          "parcial": 26.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 26.8,
+          "parcial": 107.2,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OFICIAL",
+          "descripcion": "OFICIAL",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 22.4,
+          "parcial": 89.6,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 4.0,
+          "jornal": 8.0,
+          "aporte_unitario": 16.0,
+          "precio": 20.1,
+          "parcial": 321.6,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_BUZON_PREF",
+          "descripcion": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+          "unidad": "und",
+          "cantidad": 1.0,
+          "precio": 1050.0,
+          "parcial": 1050.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_CAMION_GRUAN",
+          "descripcion": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 160.0,
+          "parcial": 640.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 544.4,
+          "parcial": 16.33,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": [
+        {
+          "recurso_id": "SUB_MONTAJE_BUZON",
+          "descripcion": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+          "unidad": "und",
+          "cantidad": 1.0,
+          "precio": 250.0,
+          "parcial": 250.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ]
+    },
+    {
+      "item": "01.02.07",
+      "descripcion": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "rendimiento": 6.0,
+      "subtotales": {
+        "subtotal_mano_obra": 124.8,
+        "subtotal_materiales": 277.0,
+        "subtotal_equipos_subcontratos": 3.74
+      },
+      "precio_unitario_directo": 405.54,
+      "costo_total_partida_directo": 48664.8,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.2667,
+          "precio": 32.5,
+          "parcial": 8.67,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 1.3333,
+          "precio": 26.8,
+          "parcial": 35.73,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 3.0,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 20.1,
+          "parcial": 80.4,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_CAJA_REGISTRO",
+          "descripcion": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+          "unidad": "und",
+          "cantidad": 1.0,
+          "precio": 145.0,
+          "parcial": 145.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_TUB_PVC_160_CONEX",
+          "descripcion": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+          "unidad": "m",
+          "cantidad": 6.0,
+          "precio": 22.0,
+          "parcial": 132.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 124.8,
+          "parcial": 3.74,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.03.01",
+      "descripcion": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+      "unidad": "M",
+      "metrado": 1000.0,
+      "rendimiento": 90.0,
+      "subtotales": {
+        "subtotal_mano_obra": 6.53,
+        "subtotal_materiales": 32.03,
+        "subtotal_equipos_subcontratos": 0.2
+      },
+      "precio_unitario_directo": 38.76,
+      "costo_total_partida_directo": 38760.0,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0178,
+          "precio": 32.5,
+          "parcial": 0.58,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.0889,
+          "precio": 26.8,
+          "parcial": 2.38,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 2.0,
+          "jornal": 8.0,
+          "aporte_unitario": 0.1778,
+          "precio": 20.1,
+          "parcial": 3.57,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_TUB_PVC_110_AGUA",
+          "descripcion": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+          "unidad": "m",
+          "cantidad": 1.02,
+          "precio": 26.5,
+          "parcial": 27.03,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_ACCESORIOS_AGUA",
+          "descripcion": "ACCESORIOS Y CODOS PVC AGUA 110MM (PROMEDIO/M)",
+          "unidad": "glb",
+          "cantidad": 1.0,
+          "precio": 5.0,
+          "parcial": 5.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 6.53,
+          "parcial": 0.2,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.03.02",
+      "descripcion": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "rendimiento": 8.0,
+      "subtotales": {
+        "subtotal_mano_obra": 73.5,
+        "subtotal_materiales": 81.0,
+        "subtotal_equipos_subcontratos": 2.21
+      },
+      "precio_unitario_directo": 156.71,
+      "costo_total_partida_directo": 18805.2,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.2,
+          "jornal": 8.0,
+          "aporte_unitario": 0.2,
+          "precio": 32.5,
+          "parcial": 6.5,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 1.0,
+          "precio": 26.8,
+          "parcial": 26.8,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 2.0,
+          "jornal": 8.0,
+          "aporte_unitario": 2.0,
+          "precio": 20.1,
+          "parcial": 40.2,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_CAJA_AGUA",
+          "descripcion": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+          "unidad": "und",
+          "cantidad": 1.0,
+          "precio": 62.0,
+          "parcial": 62.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_TUB_HDPE_1_2",
+          "descripcion": "TUBERIA HDPE 1/2 PARA ACOMETIDA AGUA",
+          "unidad": "m",
+          "cantidad": 5.0,
+          "precio": 3.8,
+          "parcial": 19.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 73.5,
+          "parcial": 2.21,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": []
+    },
+    {
+      "item": "01.04.01",
+      "descripcion": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "rendimiento": 1.0,
+      "subtotales": {
+        "subtotal_mano_obra": 1202.0,
+        "subtotal_materiales": 2950.0,
+        "subtotal_equipos_subcontratos": 5196.06
+      },
+      "precio_unitario_directo": 9348.06,
+      "costo_total_partida_directo": 9348.06,
+      "mano_obra": [
+        {
+          "recurso_id": "MO_CAPATAZ",
+          "descripcion": "CAPATAZ",
+          "unidad": "hh",
+          "cuadrilla": 0.5,
+          "jornal": 8.0,
+          "aporte_unitario": 4.0,
+          "precio": 32.5,
+          "parcial": 130.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_OPERARIO",
+          "descripcion": "OPERARIO",
+          "unidad": "hh",
+          "cuadrilla": 2.0,
+          "jornal": 8.0,
+          "aporte_unitario": 16.0,
+          "precio": 26.8,
+          "parcial": 428.8,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "MO_PEON",
+          "descripcion": "PEON",
+          "unidad": "hh",
+          "cuadrilla": 4.0,
+          "jornal": 8.0,
+          "aporte_unitario": 32.0,
+          "precio": 20.1,
+          "parcial": 643.2,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        }
+      ],
+      "materiales": [
+        {
+          "recurso_id": "MAT_HIPOCLORITO",
+          "descripcion": "HIPOCLORITO DE CALCIO 70% PARA DESINFECCION",
+          "unidad": "kg",
+          "cantidad": 50.0,
+          "precio": 35.0,
+          "parcial": 1750.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        },
+        {
+          "recurso_id": "MAT_AGUA",
+          "descripcion": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+          "unidad": "m3",
+          "cantidad": 100.0,
+          "precio": 12.0,
+          "parcial": 1200.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ],
+      "equipos": [
+        {
+          "recurso_id": "EQ_BOMBA_PRUEBA",
+          "descripcion": "BOMBA HIDROSTÁTICA DE PRUEBA DE PRESIÓN",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 8.0,
+          "precio": 30.0,
+          "parcial": 240.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_CAMION_CISTERNA",
+          "descripcion": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+          "unidad": "hm",
+          "cuadrilla": 1.0,
+          "jornal": 8.0,
+          "aporte_unitario": 8.0,
+          "precio": 140.0,
+          "parcial": 1120.0,
+          "formula_cantidad": "ROUND(cuadrilla * jornal / rendimiento, 4)",
+          "formula_parcial": "ROUND(aporte_unitario * precio, 2)"
+        },
+        {
+          "recurso_id": "EQ_HERRAMIENTAS",
+          "descripcion": "HERRAMIENTAS MANUALES",
+          "unidad": "%MO",
+          "porcentaje_mo": 0.03,
+          "precio_referencia_subtotal_mo": 1202.0,
+          "parcial": 36.06,
+          "formula_cantidad": "3.0% de MO",
+          "formula_parcial": "ROUND(porcentaje_mo * subtotal_mo, 2)"
+        }
+      ],
+      "subcontratos": [
+        {
+          "recurso_id": "SUB_PRUEBA_LAB",
+          "descripcion": "SUBCONTRATO PRUEBAS DE LABORATORIO DE AGUA (BACTERIOLOGICO/FISICOQUIMICO)",
+          "unidad": "glb",
+          "cantidad": 1.0,
+          "precio": 3800.0,
+          "parcial": 3800.0,
+          "formula_parcial": "ROUND(cantidad * precio, 2)"
+        }
+      ]
+    }
+  ]
+}

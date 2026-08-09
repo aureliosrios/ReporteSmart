@@ -1,0 +1,71 @@
+{
+  "equipos": {
+    "EQ_HERRAMIENTAS": {
+      "desc": "HERRAMIENTAS MANUALES",
+      "unit": "%MO",
+      "precio": 0
+    },
+    "EQ_EXCAVADORA": {
+      "desc": "EXCAVADORA SOBRE ORUGAS 140 HP",
+      "unit": "hm",
+      "precio": 185
+    },
+    "EQ_RETROEXCAVADORA": {
+      "desc": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+      "unit": "hm",
+      "precio": 130
+    },
+    "EQ_PLANCHA": {
+      "desc": "PLANCHA COMPACTADORA 7 HP",
+      "unit": "hm",
+      "precio": 25
+    },
+    "EQ_RODILLO_CAMINANTE": {
+      "desc": "RODILLO VIBRATORIO CAMINANTE 1.5 TN",
+      "unit": "hm",
+      "precio": 45
+    },
+    "EQ_CAMION_CISTERNA": {
+      "desc": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+      "unit": "hm",
+      "precio": 140
+    },
+    "EQ_CAMION_GRUAN": {
+      "desc": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+      "unit": "hm",
+      "precio": 160
+    },
+    "EQ_BOMBA_PRUEBA": {
+      "desc": "BOMBA HIDROSTÁTICA DE PRUEBA DE PRESIÓN",
+      "unit": "hm",
+      "precio": 30
+    },
+    "EQ_ESTACION_TOTAL": {
+      "desc": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+      "unit": "hm",
+      "precio": 18
+    }
+  },
+  "subcontratos": {
+    "SUB_MOVILIZACION": {
+      "desc": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+      "unit": "glb",
+      "precio": 4000
+    },
+    "SUB_ENSAYOS_COMPAC": {
+      "desc": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+      "unit": "und",
+      "precio": 80
+    },
+    "SUB_MONTAJE_BUZON": {
+      "desc": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+      "unit": "und",
+      "precio": 250
+    },
+    "SUB_PRUEBA_LAB": {
+      "desc": "SUBCONTRATO PRUEBAS DE LABORATORIO DE AGUA (BACTERIOLOGICO/FISICOQUIMICO)",
+      "unit": "glb",
+      "precio": 3800
+    }
+  }
+}

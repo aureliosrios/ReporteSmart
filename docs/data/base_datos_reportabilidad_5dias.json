@@ -1,0 +1,977 @@
+{
+  "metadata": {
+    "proyecto": "Redes Sanitarias de Agua Potable y Alcantarillado - Habilitación Urbana Los Cedros",
+    "codigo_proyecto": "HU-CEDROS-2026",
+    "version_esquema": "3.1.0",
+    "moneda": "PEN",
+    "periodo_simulacion": "5 Días de Operación de Campo (2026-08-01 al 2026-08-05)",
+    "descripcion": "Base de datos en vivo de reportabilidad diaria desde portales móviles hacia Google Sheets / Excel con fórmulas vivas de EVM y KPIs"
+  },
+  "catalogos": {
+    "wbs": [
+      {
+        "codigo": "WBS-100",
+        "nombre": "Obras Preliminares, Trazo y Movilización",
+        "bac_pen": 8296.4,
+        "pv_acumulado_pen": 8296.4
+      },
+      {
+        "codigo": "WBS-200",
+        "nombre": "Red de Alcantarillado, Zanjas y Buzones",
+        "bac_pen": 380086.56,
+        "pv_acumulado_pen": 45000.0
+      },
+      {
+        "codigo": "WBS-300",
+        "nombre": "Red de Agua Potable y Conexiones Domiciliarias",
+        "bac_pen": 57565.2,
+        "pv_acumulado_pen": 12000.0
+      },
+      {
+        "codigo": "WBS-400",
+        "nombre": "Pruebas Hidráulicas, Desinfección y Entrega",
+        "bac_pen": 9348.06,
+        "pv_acumulado_pen": 2500.0
+      }
+    ],
+    "recursos": {
+      "MO_CAPATAZ": {
+        "desc": "CAPATAZ",
+        "unit": "hh",
+        "precio": 32.5,
+        "categoria": "AC_MO"
+      },
+      "MO_OPERARIO": {
+        "desc": "OPERARIO",
+        "unit": "hh",
+        "precio": 26.8,
+        "categoria": "AC_MO"
+      },
+      "MO_OFICIAL": {
+        "desc": "OFICIAL",
+        "unit": "hh",
+        "precio": 22.4,
+        "categoria": "AC_MO"
+      },
+      "MO_PEON": {
+        "desc": "PEON",
+        "unit": "hh",
+        "precio": 20.1,
+        "categoria": "AC_MO"
+      },
+      "MAT_ESTACA": {
+        "desc": "ESTACAS Y MADERA PARA TRAZO",
+        "unit": "pza",
+        "precio": 4.5,
+        "categoria": "AC_MAT"
+      },
+      "MAT_PINTURA": {
+        "desc": "PINTURA SPRAY MARCADOR DE ZANJA",
+        "unit": "gla",
+        "precio": 18.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_CORDEL": {
+        "desc": "CORDEL / NYLON",
+        "unit": "m",
+        "precio": 0.8,
+        "categoria": "AC_MAT"
+      },
+      "MAT_ARENA_CAMAS": {
+        "desc": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+        "unit": "m3",
+        "precio": 45.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_TUB_PVC_200": {
+        "desc": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+        "unit": "m",
+        "precio": 42.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_LUBRICANTE": {
+        "desc": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+        "unit": "kg",
+        "precio": 24.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_MATERIAL_PR": {
+        "desc": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+        "unit": "m3",
+        "precio": 38.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_AGUA": {
+        "desc": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+        "unit": "m3",
+        "precio": 12.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_BUZON_PREF": {
+        "desc": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+        "unit": "und",
+        "precio": 1050.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_CAJA_REGISTRO": {
+        "desc": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+        "unit": "und",
+        "precio": 145.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_TUB_PVC_160_CONEX": {
+        "desc": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+        "unit": "m",
+        "precio": 22.0,
+        "categoria": "AC_MAT"
+      },
+      "MAT_TUB_PVC_110_AGUA": {
+        "desc": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+        "unit": "m",
+        "precio": 26.5,
+        "categoria": "AC_MAT"
+      },
+      "MAT_CAJA_AGUA": {
+        "desc": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+        "unit": "und",
+        "precio": 62.0,
+        "categoria": "AC_MAT"
+      },
+      "EQ_EXCAVADORA": {
+        "desc": "EXCAVADORA SOBRE ORUGAS 140 HP",
+        "unit": "hm",
+        "precio": 185.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_RETROEXCAVADORA": {
+        "desc": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+        "unit": "hm",
+        "precio": 130.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_PLANCHA": {
+        "desc": "PLANCHA COMPACTADORA 7 HP",
+        "unit": "hm",
+        "precio": 25.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_RODILLO_CAMINANTE": {
+        "desc": "RODILLO VIBRATORIO CAMINANTE 1.5 TN",
+        "unit": "hm",
+        "precio": 45.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_CAMION_CISTERNA": {
+        "desc": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+        "unit": "hm",
+        "precio": 140.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_CAMION_GRUAN": {
+        "desc": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+        "unit": "hm",
+        "precio": 160.0,
+        "categoria": "AC_EQP"
+      },
+      "EQ_ESTACION_TOTAL": {
+        "desc": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+        "unit": "hm",
+        "precio": 18.0,
+        "categoria": "AC_EQP"
+      },
+      "SUB_MOVILIZACION": {
+        "desc": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+        "unit": "glb",
+        "precio": 4000.0,
+        "categoria": "AC_SUB"
+      },
+      "SUB_ENSAYOS_COMPAC": {
+        "desc": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+        "unit": "und",
+        "precio": 80.0,
+        "categoria": "AC_SUB"
+      },
+      "SUB_MONTAJE_BUZON": {
+        "desc": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+        "unit": "und",
+        "precio": 250.0,
+        "categoria": "AC_SUB"
+      }
+    },
+    "partidas_ev": {
+      "01.01": {
+        "desc": "Obras Preliminares y Trabajos Provisionales",
+        "unit": "GLB",
+        "pu": 8296.4
+      },
+      "01.02.01": {
+        "desc": "Trazo, Nivelación y Replanteo de Zanjas",
+        "unit": "M",
+        "pu": 3.35
+      },
+      "01.02.02": {
+        "desc": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+        "unit": "M3",
+        "pu": 11.66
+      },
+      "01.02.03": {
+        "desc": "Preparación y Colocación de Cama de Arena e=0.10m",
+        "unit": "M",
+        "pu": 11.12
+      },
+      "01.02.04": {
+        "desc": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+        "unit": "M",
+        "pu": 55.51
+      },
+      "01.02.05": {
+        "desc": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+        "unit": "M3",
+        "pu": 28.54
+      },
+      "01.02.06": {
+        "desc": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+        "unit": "UND",
+        "pu": 2500.73
+      },
+      "01.02.07": {
+        "desc": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+        "unit": "UND",
+        "pu": 405.54
+      },
+      "01.03.01": {
+        "desc": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+        "unit": "M",
+        "pu": 38.76
+      },
+      "01.03.02": {
+        "desc": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+        "unit": "UND",
+        "pu": 156.71
+      },
+      "01.04.01": {
+        "desc": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+        "unit": "GLB",
+        "pu": 9348.06
+      }
+    }
+  },
+  "especificacion_formulas_vivas_excel": {
+    "formula_costo_total_registro": "=ROUND(G{row}*I{row}, 2)",
+    "formula_sumatoria_ev_total": "=SUMIFS(REGISTROS_DIARIOS!J:J, REGISTROS_DIARIOS!K:K, \"EV_PRODUCCION\")",
+    "formula_sumatoria_ac_total": "=SUMIF(REGISTROS_DIARIOS!K:K, \"AC_*\", REGISTROS_DIARIOS!J:J)",
+    "formula_cpi": "=IF(AC>0, EV/AC, 1)",
+    "formula_spi": "=IF(PV>0, EV/PV, 1)",
+    "formula_eac": "=IF(CPI>0, BAC/CPI, BAC)",
+    "formula_ac_por_wbs": "=SUMIFS(REGISTROS_DIARIOS!J:J, REGISTROS_DIARIOS!D:D, WBS_CODE, REGISTROS_DIARIOS!K:K, \"AC_*\")",
+    "formula_ev_por_wbs": "=SUMIFS(REGISTROS_DIARIOS!J:J, REGISTROS_DIARIOS!D:D, WBS_CODE, REGISTROS_DIARIOS!K:K, \"EV_PRODUCCION\")"
+  },
+  "registros_diarios": [
+    {
+      "id_registro": "LOG-20260801-001",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "MO_CAPATAZ",
+      "descripcion_detalle": "CAPATAZ (1 pers. x 8h)",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "pu_meta_pen": 32.5,
+      "costo_total_pen": 260.0,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-002",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-003",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "MO_PEON",
+      "descripcion_detalle": "PEON (4 pers. x 8h)",
+      "cantidad": 32.0,
+      "unidad": "hh",
+      "pu_meta_pen": 20.1,
+      "costo_total_pen": 643.2,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-004",
+      "fecha": "2026-08-01",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "MAT_ESTACA",
+      "descripcion_detalle": "ESTACAS Y MADERA PARA TRAZO EN AV. LOS CEDROS",
+      "cantidad": 150.0,
+      "unidad": "pza",
+      "pu_meta_pen": 4.5,
+      "costo_total_pen": 675.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-005",
+      "fecha": "2026-08-01",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "MAT_PINTURA",
+      "descripcion_detalle": "PINTURA SPRAY MARCADOR ZANJA",
+      "cantidad": 10.0,
+      "unidad": "gla",
+      "pu_meta_pen": 18.0,
+      "costo_total_pen": 180.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-006",
+      "fecha": "2026-08-01",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "SUB_MOVILIZACION",
+      "descripcion_detalle": "MOVILIZACION DE MAQUINARIA A OBRA",
+      "cantidad": 1.0,
+      "unidad": "glb",
+      "pu_meta_pen": 4000.0,
+      "costo_total_pen": 4000.0,
+      "categoria_evm": "AC_SUB",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-007",
+      "fecha": "2026-08-01",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "EQ_ESTACION_TOTAL",
+      "descripcion_detalle": "ESTACION TOTAL TOPOGRAFICA",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "pu_meta_pen": 18.0,
+      "costo_total_pen": 144.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-008",
+      "fecha": "2026-08-01",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "01.01",
+      "descripcion_detalle": "OBRAS PRELIMINARES Y TRABAJOS PROVISIONALES (50%)",
+      "cantidad": 0.5,
+      "unidad": "GLB",
+      "pu_meta_pen": 8296.4,
+      "costo_total_pen": 4148.2,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260801-009",
+      "fecha": "2026-08-01",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-100",
+      "codigo_recurso_partida": "01.02.01",
+      "descripcion_detalle": "TRAZO Y REPLANTEO INICIAL TRAMO T-1",
+      "cantidad": 500.0,
+      "unidad": "M",
+      "pu_meta_pen": 3.35,
+      "costo_total_pen": 1675.0,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-010",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_CAPATAZ",
+      "descripcion_detalle": "CAPATAZ CONTROL ZANJA",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "pu_meta_pen": 32.5,
+      "costo_total_pen": 260.0,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-011",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO ENTIBADO Y CAMA",
+      "cantidad": 24.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 643.2,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-012",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_PEON",
+      "descripcion_detalle": "PEON REPELE Y CAMA (6 pers. x 8h)",
+      "cantidad": 48.0,
+      "unidad": "hh",
+      "pu_meta_pen": 20.1,
+      "costo_total_pen": 964.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-013",
+      "fecha": "2026-08-02",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_ARENA_CAMAS",
+      "descripcion_detalle": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+      "cantidad": 35.0,
+      "unidad": "m3",
+      "pu_meta_pen": 45.0,
+      "costo_total_pen": 1575.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-014",
+      "fecha": "2026-08-02",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "EQ_EXCAVADORA",
+      "descripcion_detalle": "EXCAVADORA SOBRE ORUGAS 140 HP EN ZANJA PRINCIPAL",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "pu_meta_pen": 185.0,
+      "costo_total_pen": 1480.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-015",
+      "fecha": "2026-08-02",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.02",
+      "descripcion_detalle": "EXCAVACION DE ZANJA H=1.5-2.2M A MAQUINA TRAMO T-1",
+      "cantidad": 450.0,
+      "unidad": "M3",
+      "pu_meta_pen": 11.66,
+      "costo_total_pen": 5247.0,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260802-016",
+      "fecha": "2026-08-02",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.03",
+      "descripcion_detalle": "COLOCACION DE CAMA DE ARENA E=0.10M TRAMO T-1",
+      "cantidad": 300.0,
+      "unidad": "M",
+      "pu_meta_pen": 11.12,
+      "costo_total_pen": 3336.0,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-017",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO TUBERO ALCANTARILLADO (3 pers. x 8h)",
+      "cantidad": 24.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 643.2,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-018",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OFICIAL",
+      "descripcion_detalle": "OFICIAL COMPACTACION Y LUBRICADO",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 22.4,
+      "costo_total_pen": 358.4,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-019",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_PEON",
+      "descripcion_detalle": "PEON APOYO MONTAJE TUBERIA",
+      "cantidad": 40.0,
+      "unidad": "hh",
+      "pu_meta_pen": 20.1,
+      "costo_total_pen": 804.0,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-020",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_TUB_PVC_200",
+      "descripcion_detalle": "TUBERIA PVC UF DN 200MM S-20 ALCANTARILLADO",
+      "cantidad": 280.0,
+      "unidad": "m",
+      "pu_meta_pen": 42.0,
+      "costo_total_pen": 11760.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-021",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_LUBRICANTE",
+      "descripcion_detalle": "LUBRICANTE PARA TUBERIA PVC",
+      "cantidad": 12.0,
+      "unidad": "kg",
+      "pu_meta_pen": 24.0,
+      "costo_total_pen": 288.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-022",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_MATERIAL_PR",
+      "descripcion_detalle": "MATERIAL AFIRMADO PRESTAMO RELLENO COMPACTADO",
+      "cantidad": 60.0,
+      "unidad": "m3",
+      "pu_meta_pen": 38.0,
+      "costo_total_pen": 2280.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-023",
+      "fecha": "2026-08-03",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "EQ_RETROEXCAVADORA",
+      "descripcion_detalle": "RETROEXCAVADORA RELLENO Y LIMPIEZA",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "pu_meta_pen": 130.0,
+      "costo_total_pen": 1040.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-024",
+      "fecha": "2026-08-03",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "EQ_PLANCHA",
+      "descripcion_detalle": "PLANCHA COMPACTADORA 7 HP EN ZANJA",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "pu_meta_pen": 25.0,
+      "costo_total_pen": 200.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-025",
+      "fecha": "2026-08-03",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.04",
+      "descripcion_detalle": "INSTALACION TUBERIA PVC UF DN 200MM ALCANTARILLADO",
+      "cantidad": 250.0,
+      "unidad": "M",
+      "pu_meta_pen": 55.51,
+      "costo_total_pen": 13877.5,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260803-026",
+      "fecha": "2026-08-03",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.05",
+      "descripcion_detalle": "RELLENO COMPACTADO DE ZANJA CAPAS 0.20M",
+      "cantidad": 200.0,
+      "unidad": "M3",
+      "pu_meta_pen": 28.54,
+      "costo_total_pen": 5708.0,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-027",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO MONTAJE BUZONES",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-028",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO TUBERO AGUA POTABLE",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-029",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "MO_PEON",
+      "descripcion_detalle": "PEON APERTURA ZANJA AGUA",
+      "cantidad": 32.0,
+      "unidad": "hh",
+      "pu_meta_pen": 20.1,
+      "costo_total_pen": 643.2,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-030",
+      "fecha": "2026-08-04",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_BUZON_PREF",
+      "descripcion_detalle": "BUZON PREFABRICADO DE CONCRETO H=2.0M CON MARCO/TAPA",
+      "cantidad": 4.0,
+      "unidad": "und",
+      "pu_meta_pen": 1050.0,
+      "costo_total_pen": 4200.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-031",
+      "fecha": "2026-08-04",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "MAT_TUB_PVC_110_AGUA",
+      "descripcion_detalle": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+      "cantidad": 200.0,
+      "unidad": "m",
+      "pu_meta_pen": 26.5,
+      "costo_total_pen": 5300.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-032",
+      "fecha": "2026-08-04",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "EQ_CAMION_GRUAN",
+      "descripcion_detalle": "CAMION GRUA 5 TN MONTAJE BUZONES PREFABRICADOS",
+      "cantidad": 6.0,
+      "unidad": "hm",
+      "pu_meta_pen": 160.0,
+      "costo_total_pen": 960.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-033",
+      "fecha": "2026-08-04",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "SUB_MONTAJE_BUZON",
+      "descripcion_detalle": "SUBCONTRATO ASENTADO Y SELLADO DE BUZONES",
+      "cantidad": 4.0,
+      "unidad": "und",
+      "pu_meta_pen": 250.0,
+      "costo_total_pen": 1000.0,
+      "categoria_evm": "AC_SUB",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-034",
+      "fecha": "2026-08-04",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.06",
+      "descripcion_detalle": "CONSTRUCCION DE BUZONES PREFABRICADOS CONCRETO H=1.5-2.5M",
+      "cantidad": 4.0,
+      "unidad": "UND",
+      "pu_meta_pen": 2500.73,
+      "costo_total_pen": 10002.92,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260804-035",
+      "fecha": "2026-08-04",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "01.03.01",
+      "descripcion_detalle": "INSTALACION TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+      "cantidad": 180.0,
+      "unidad": "M",
+      "pu_meta_pen": 38.76,
+      "costo_total_pen": 6976.8,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-036",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO CONEXION DOMICILIARIA ALCANTARILLADO",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-037",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion_detalle": "OPERARIO CONEXION DOMICILIARIA AGUA",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "pu_meta_pen": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-038",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-400",
+      "codigo_recurso_partida": "MO_OFICIAL",
+      "descripcion_detalle": "OFICIAL PRUEBAS HIDRAULICAS DE RED",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "pu_meta_pen": 22.4,
+      "costo_total_pen": 179.2,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-039",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_CAJA_REGISTRO",
+      "descripcion_detalle": "CAJA DE REGISTRO PREFABRICADA 12X24 WITH TAPA",
+      "cantidad": 15.0,
+      "unidad": "und",
+      "pu_meta_pen": 145.0,
+      "costo_total_pen": 2175.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-040",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MAT_TUB_PVC_160_CONEX",
+      "descripcion_detalle": "TUBERIA PVC SAL DN 160MM ACOMETIDA",
+      "cantidad": 90.0,
+      "unidad": "m",
+      "pu_meta_pen": 22.0,
+      "costo_total_pen": 1980.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-041",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "MAT_CAJA_AGUA",
+      "descripcion_detalle": "CAJA TERMOFORMADA MEDIDOR + ABRAZADERA + LLAVE",
+      "cantidad": 15.0,
+      "unidad": "und",
+      "pu_meta_pen": 62.0,
+      "costo_total_pen": 930.0,
+      "categoria_evm": "AC_MAT",
+      "origen_html": "almacenero.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-042",
+      "fecha": "2026-08-05",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "SUB_ENSAYOS_COMPAC",
+      "descripcion_detalle": "SUBCONTRATO ENSAYOS DENSIDAD DE CAMPO (PROCTOR)",
+      "cantidad": 10.0,
+      "unidad": "und",
+      "pu_meta_pen": 80.0,
+      "costo_total_pen": 800.0,
+      "categoria_evm": "AC_SUB",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-043",
+      "fecha": "2026-08-05",
+      "rol": "Administradora",
+      "wbs_codigo": "WBS-400",
+      "codigo_recurso_partida": "EQ_CAMION_CISTERNA",
+      "descripcion_detalle": "CAMION CISTERNA AGUA PRUEBAS HIDRAULICAS",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "pu_meta_pen": 140.0,
+      "costo_total_pen": 1120.0,
+      "categoria_evm": "AC_EQP",
+      "origen_html": "administradora.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-044",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "01.02.07",
+      "descripcion_detalle": "CONEXIONES DOMICILIARIAS ALCANTARILLADO (15 ACOMETIDAS)",
+      "cantidad": 15.0,
+      "unidad": "UND",
+      "pu_meta_pen": 405.54,
+      "costo_total_pen": 6083.1,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-045",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-300",
+      "codigo_recurso_partida": "01.03.02",
+      "descripcion_detalle": "CONEXIONES DOMICILIARIAS AGUA POTABLE (15 ACOMETIDAS)",
+      "cantidad": 15.0,
+      "unidad": "UND",
+      "pu_meta_pen": 156.71,
+      "costo_total_pen": 2350.65,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    },
+    {
+      "id_registro": "LOG-20260805-046",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs_codigo": "WBS-400",
+      "codigo_recurso_partida": "01.04.01",
+      "descripcion_detalle": "PRUEBA HIDRAULICA TRAMO 1 ALCANTARILLADO Y AGUA (25%)",
+      "cantidad": 0.25,
+      "unidad": "GLB",
+      "pu_meta_pen": 9348.06,
+      "costo_total_pen": 2337.01,
+      "categoria_evm": "EV_PRODUCCION",
+      "origen_html": "ing_campo.html",
+      "estado_validacion": "VALIDO"
+    }
+  ],
+  "resumen_5_dias": {
+    "total_registros": 46,
+    "fechas": [
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05"
+    ],
+    "roles_participantes": [
+      "Tareador (Bildin)",
+      "Almacenero",
+      "Administradora",
+      "Ing. de Campo"
+    ]
+  }
+}

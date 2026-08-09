@@ -1,0 +1,928 @@
+{
+  "metadata": {
+    "proyecto": "Redes Sanitarias de Agua Potable y Alcantarillado - Habilitación Urbana Los Cedros",
+    "codigo_proyecto": "HU-CEDROS-2026",
+    "version_esquema": "12.0.0",
+    "moneda": "PEN",
+    "duracion_dias_calendario": 60,
+    "fecha_inicio_obra": "2026-08-01",
+    "fecha_fin_programada": "2026-09-29",
+    "descripcion": "Base de datos viva oficial para Google Sheets / Excel. Restaurados los 46 registros de muestra de los 5 días en Pestaña 04 con formato de moneda agnóstico '\"S/\" #,##0.00'."
+  },
+  "presupuesto_detallado": [
+    {
+      "item": "01.01",
+      "codigo_wbs": "WBS-100",
+      "descripcion": "Obras Preliminares y Trabajos Provisionales",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "pu": 8296.4,
+      "inicio": "2026-08-01",
+      "fin": "2026-08-14",
+      "dia_start": 1,
+      "dia_end": 14
+    },
+    {
+      "item": "01.02.01",
+      "codigo_wbs": "WBS-100",
+      "descripcion": "Trazo, Nivelación y Replanteo de Zanjas",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "pu": 3.35,
+      "inicio": "2026-08-01",
+      "fin": "2026-08-14",
+      "dia_start": 1,
+      "dia_end": 14
+    },
+    {
+      "item": "01.02.02",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+      "unidad": "M3",
+      "metrado": 3840.0,
+      "pu": 11.66,
+      "inicio": "2026-08-10",
+      "fin": "2026-08-25",
+      "dia_start": 10,
+      "dia_end": 25
+    },
+    {
+      "item": "01.02.03",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Preparación y Colocación de Cama de Arena e=0.10m",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "pu": 11.12,
+      "inicio": "2026-08-12",
+      "fin": "2026-08-28",
+      "dia_start": 12,
+      "dia_end": 28
+    },
+    {
+      "item": "01.02.04",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+      "unidad": "M",
+      "metrado": 1400.0,
+      "pu": 55.51,
+      "inicio": "2026-08-15",
+      "fin": "2026-08-31",
+      "dia_start": 15,
+      "dia_end": 31
+    },
+    {
+      "item": "01.02.05",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+      "unidad": "M3",
+      "metrado": 3300.0,
+      "pu": 28.54,
+      "inicio": "2026-08-18",
+      "fin": "2026-09-05",
+      "dia_start": 18,
+      "dia_end": 36
+    },
+    {
+      "item": "01.02.06",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+      "unidad": "UND",
+      "metrado": 32.0,
+      "pu": 2500.73,
+      "inicio": "2026-08-22",
+      "fin": "2026-09-10",
+      "dia_start": 22,
+      "dia_end": 41
+    },
+    {
+      "item": "01.02.07",
+      "codigo_wbs": "WBS-200",
+      "descripcion": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "pu": 405.54,
+      "inicio": "2026-08-28",
+      "fin": "2026-09-12",
+      "dia_start": 28,
+      "dia_end": 43
+    },
+    {
+      "item": "01.03.01",
+      "codigo_wbs": "WBS-300",
+      "descripcion": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+      "unidad": "M",
+      "metrado": 1000.0,
+      "pu": 38.76,
+      "inicio": "2026-08-22",
+      "fin": "2026-09-12",
+      "dia_start": 22,
+      "dia_end": 43
+    },
+    {
+      "item": "01.03.02",
+      "codigo_wbs": "WBS-300",
+      "descripcion": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "pu": 156.71,
+      "inicio": "2026-09-01",
+      "fin": "2026-09-20",
+      "dia_start": 32,
+      "dia_end": 51
+    },
+    {
+      "item": "01.04.01",
+      "codigo_wbs": "WBS-400",
+      "descripcion": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "pu": 9348.06,
+      "inicio": "2026-09-17",
+      "fin": "2026-09-29",
+      "dia_start": 48,
+      "dia_end": 60
+    }
+  ],
+  "maestros_precios_unitarios": {
+    "recursos": [
+      {
+        "codigo": "MO_CAPATAZ",
+        "descripcion": "CAPATAZ",
+        "unidad": "hh",
+        "precio_unitario": 32.5,
+        "categoria": "AC_MO"
+      },
+      {
+        "codigo": "MO_OPERARIO",
+        "descripcion": "OPERARIO",
+        "unidad": "hh",
+        "precio_unitario": 26.8,
+        "categoria": "AC_MO"
+      },
+      {
+        "codigo": "MO_OFICIAL",
+        "descripcion": "OFICIAL",
+        "unidad": "hh",
+        "precio_unitario": 22.4,
+        "categoria": "AC_MO"
+      },
+      {
+        "codigo": "MO_PEON",
+        "descripcion": "PEON",
+        "unidad": "hh",
+        "precio_unitario": 20.1,
+        "categoria": "AC_MO"
+      },
+      {
+        "codigo": "MAT_ESTACA",
+        "descripcion": "ESTACAS Y MADERA PARA TRAZO",
+        "unidad": "pza",
+        "precio_unitario": 4.5,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_PINTURA",
+        "descripcion": "PINTURA SPRAY MARCADOR DE ZANJA",
+        "unidad": "gla",
+        "precio_unitario": 18.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_CORDEL",
+        "descripcion": "CORDEL / NYLON",
+        "unidad": "m",
+        "precio_unitario": 0.8,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_ARENA_CAMAS",
+        "descripcion": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+        "unidad": "m3",
+        "precio_unitario": 45.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_TUB_PVC_200",
+        "descripcion": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+        "unidad": "m",
+        "precio_unitario": 42.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_LUBRICANTE",
+        "descripcion": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+        "unidad": "kg",
+        "precio_unitario": 24.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_MATERIAL_PR",
+        "descripcion": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+        "unidad": "m3",
+        "precio_unitario": 38.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_AGUA",
+        "descripcion": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+        "unidad": "m3",
+        "precio_unitario": 12.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_BUZON_PREF",
+        "descripcion": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+        "unidad": "und",
+        "precio_unitario": 1050.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_CAJA_REGISTRO",
+        "descripcion": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+        "unidad": "und",
+        "precio_unitario": 145.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_TUB_PVC_160_CONEX",
+        "descripcion": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+        "unidad": "m",
+        "precio_unitario": 22.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_TUB_PVC_110_AGUA",
+        "descripcion": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+        "unidad": "m",
+        "precio_unitario": 26.5,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_ACCESORIOS_AGUA",
+        "descripcion": "ACCESORIOS Y CODOS PVC AGUA 110MM (PROMEDIO/M)",
+        "unidad": "glb",
+        "precio_unitario": 5.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_CAJA_AGUA",
+        "descripcion": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+        "unidad": "und",
+        "precio_unitario": 62.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_TUB_HDPE_1_2",
+        "descripcion": "TUBERIA HDPE 1/2 PARA ACOMETIDA AGUA",
+        "unidad": "m",
+        "precio_unitario": 3.8,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_HIPOCLORITO",
+        "descripcion": "HIPOCLORITO DE CALCIO 70% PARA DESINFECCION",
+        "unidad": "kg",
+        "precio_unitario": 35.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_CARTEL",
+        "descripcion": "CARTEL DE OBRA 3.60X2.40M",
+        "unidad": "und",
+        "precio_unitario": 1200.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "MAT_CASETA",
+        "descripcion": "CASETA DE ALMACEN Y OFICINA PROVISIONAL",
+        "unidad": "glb",
+        "precio_unitario": 2300.0,
+        "categoria": "AC_MAT"
+      },
+      {
+        "codigo": "EQ_EXCAVADORA",
+        "descripcion": "EXCAVADORA SOBRE ORUGAS 140 HP",
+        "unidad": "hm",
+        "precio_unitario": 185.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_RETROEXCAVADORA",
+        "descripcion": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+        "unidad": "hm",
+        "precio_unitario": 130.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_PLANCHA",
+        "descripcion": "PLANCHA COMPACTADORA 7 HP",
+        "unidad": "hm",
+        "precio_unitario": 25.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_RODILLO_CAMINANTE",
+        "descripcion": "RODILLO VIBRATORIO CAMINANTE 1.5 TN",
+        "unidad": "hm",
+        "precio_unitario": 45.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_CAMION_CISTERNA",
+        "descripcion": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+        "unidad": "hm",
+        "precio_unitario": 140.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_CAMION_GRUAN",
+        "descripcion": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+        "unidad": "hm",
+        "precio_unitario": 160.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "EQ_ESTACION_TOTAL",
+        "descripcion": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+        "unidad": "hm",
+        "precio_unitario": 18.0,
+        "categoria": "AC_EQP"
+      },
+      {
+        "codigo": "SUB_MOVILIZACION",
+        "descripcion": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+        "unidad": "glb",
+        "precio_unitario": 4000.0,
+        "categoria": "AC_SUB"
+      },
+      {
+        "codigo": "SUB_ENSAYOS_COMPAC",
+        "descripcion": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+        "unidad": "und",
+        "precio_unitario": 80.0,
+        "categoria": "AC_SUB"
+      },
+      {
+        "codigo": "SUB_MONTAJE_BUZON",
+        "descripcion": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+        "unidad": "und",
+        "precio_unitario": 250.0,
+        "categoria": "AC_SUB"
+      }
+    ]
+  },
+  "registros_diarios_campo_muestra": [
+    {
+      "id": "LOG-20260801-001",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-100",
+      "recurso": "MO_CAPATAZ",
+      "detalle": "CAPATAZ (1 pers. x 8h)",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260801-002",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-100",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260801-003",
+      "fecha": "2026-08-01",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-100",
+      "recurso": "MO_PEON",
+      "detalle": "PEON (4 pers. x 8h)",
+      "cantidad": 32.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260801-004",
+      "fecha": "2026-08-01",
+      "rol": "Almacenero",
+      "wbs": "WBS-100",
+      "recurso": "MAT_ESTACA",
+      "detalle": "ESTACAS Y MADERA PARA TRAZO",
+      "cantidad": 150.0,
+      "unidad": "pza",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260801-005",
+      "fecha": "2026-08-01",
+      "rol": "Almacenero",
+      "wbs": "WBS-100",
+      "recurso": "MAT_PINTURA",
+      "detalle": "PINTURA SPRAY MARCADOR ZANJA",
+      "cantidad": 10.0,
+      "unidad": "gla",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260801-006",
+      "fecha": "2026-08-01",
+      "rol": "Administradora",
+      "wbs": "WBS-100",
+      "recurso": "SUB_MOVILIZACION",
+      "detalle": "MOVILIZACION DE MAQUINARIA",
+      "cantidad": 1.0,
+      "unidad": "glb",
+      "cat": "AC_SUB",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260801-007",
+      "fecha": "2026-08-01",
+      "rol": "Administradora",
+      "wbs": "WBS-100",
+      "recurso": "EQ_ESTACION_TOTAL",
+      "detalle": "ESTACION TOTAL TOPOGRAFICA",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260801-008",
+      "fecha": "2026-08-01",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-100",
+      "recurso": "01.01",
+      "detalle": "OBRAS PRELIMINARES Y PROVISIONALES (50%)",
+      "cantidad": 0.5,
+      "unidad": "GLB",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260801-009",
+      "fecha": "2026-08-01",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-100",
+      "recurso": "01.02.01",
+      "detalle": "TRAZO Y REPLANTEO INICIAL TRAMO T-1",
+      "cantidad": 500.0,
+      "unidad": "M",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260802-010",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_CAPATAZ",
+      "detalle": "CAPATAZ CONTROL ZANJA",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260802-011",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO ENTIBADO Y CAMA",
+      "cantidad": 24.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260802-012",
+      "fecha": "2026-08-02",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_PEON",
+      "detalle": "PEON REPELE Y CAMA",
+      "cantidad": 48.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260802-013",
+      "fecha": "2026-08-02",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_ARENA_CAMAS",
+      "detalle": "ARENA FINA SELECCIONADA PARA CAMA",
+      "cantidad": 35.0,
+      "unidad": "m3",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260802-014",
+      "fecha": "2026-08-02",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "EQ_EXCAVADORA",
+      "detalle": "EXCAVADORA SOBRE ORUGAS 140 HP",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260802-015",
+      "fecha": "2026-08-02",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.02",
+      "detalle": "EXCAVACION ZANJA H=1.5-2.2M A MAQUINA",
+      "cantidad": 450.0,
+      "unidad": "M3",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260802-016",
+      "fecha": "2026-08-02",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.03",
+      "detalle": "COLOCACION CAMA DE ARENA E=0.10M",
+      "cantidad": 300.0,
+      "unidad": "M",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260803-017",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO TUBERO ALCANTARILLADO",
+      "cantidad": 24.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260803-018",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_OFICIAL",
+      "detalle": "OFICIAL COMPACTACION",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260803-019",
+      "fecha": "2026-08-03",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_PEON",
+      "detalle": "PEON APOYO MONTAJE TUBERIA",
+      "cantidad": 40.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260803-020",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_TUB_PVC_200",
+      "detalle": "TUBERIA PVC UF DN 200MM S-20",
+      "cantidad": 280.0,
+      "unidad": "m",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260803-021",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_LUBRICANTE",
+      "detalle": "LUBRICANTE PARA TUBERIA PVC",
+      "cantidad": 12.0,
+      "unidad": "kg",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260803-022",
+      "fecha": "2026-08-03",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_MATERIAL_PR",
+      "detalle": "MATERIAL AFIRMADO RELLENO COMPACTADO",
+      "cantidad": 60.0,
+      "unidad": "m3",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260803-023",
+      "fecha": "2026-08-03",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "EQ_RETROEXCAVADORA",
+      "detalle": "RETROEXCAVADORA RELLENO Y LIMPIEZA",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260803-024",
+      "fecha": "2026-08-03",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "EQ_PLANCHA",
+      "detalle": "PLANCHA COMPACTADORA 7 HP",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260803-025",
+      "fecha": "2026-08-03",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.04",
+      "detalle": "INSTALACION TUBERIA PVC 200MM ALCANTARILLADO",
+      "cantidad": 250.0,
+      "unidad": "M",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260803-026",
+      "fecha": "2026-08-03",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.05",
+      "detalle": "RELLENO COMPACTADO ZANJA CAPAS 0.20M",
+      "cantidad": 200.0,
+      "unidad": "M3",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260804-027",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO MONTAJE BUZONES",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260804-028",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-300",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO TUBERO AGUA POTABLE",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260804-029",
+      "fecha": "2026-08-04",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-300",
+      "recurso": "MO_PEON",
+      "detalle": "PEON APERTURA ZANJA AGUA",
+      "cantidad": 32.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260804-030",
+      "fecha": "2026-08-04",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_BUZON_PREF",
+      "detalle": "BUZON PREFABRICADO DE CONCRETO H=2.0M",
+      "cantidad": 4.0,
+      "unidad": "und",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260804-031",
+      "fecha": "2026-08-04",
+      "rol": "Almacenero",
+      "wbs": "WBS-300",
+      "recurso": "MAT_TUB_PVC_110_AGUA",
+      "detalle": "TUBERIA PVC C-10 DN 110MM AGUA",
+      "cantidad": 200.0,
+      "unidad": "m",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260804-032",
+      "fecha": "2026-08-04",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "EQ_CAMION_GRUAN",
+      "detalle": "CAMION GRUA 5 TN MONTAJE BUZONES",
+      "cantidad": 6.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260804-033",
+      "fecha": "2026-08-04",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "SUB_MONTAJE_BUZON",
+      "detalle": "SUBCONTRATO ASENTADO Y SELLADO BUZONES",
+      "cantidad": 4.0,
+      "unidad": "und",
+      "cat": "AC_SUB",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260804-034",
+      "fecha": "2026-08-04",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.06",
+      "detalle": "CONSTRUCCION BUZONES PREFABRICADOS CONCRETO",
+      "cantidad": 4.0,
+      "unidad": "UND",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260804-035",
+      "fecha": "2026-08-04",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-300",
+      "recurso": "01.03.01",
+      "detalle": "INSTALACION TUBERIA PVC C-10 DN 110MM AGUA",
+      "cantidad": 180.0,
+      "unidad": "M",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260805-036",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-200",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO CONEXION DOMICILIARIA ALCANTARILLADO",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260805-037",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-300",
+      "recurso": "MO_OPERARIO",
+      "detalle": "OPERARIO CONEXION DOMICILIARIA AGUA",
+      "cantidad": 16.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260805-038",
+      "fecha": "2026-08-05",
+      "rol": "Tareador (Bildin)",
+      "wbs": "WBS-400",
+      "recurso": "MO_OFICIAL",
+      "detalle": "OFICIAL PRUEBAS HIDRAULICAS DE RED",
+      "cantidad": 8.0,
+      "unidad": "hh",
+      "cat": "AC_MO",
+      "html": "tareador.html"
+    },
+    {
+      "id": "LOG-20260805-039",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_CAJA_REGISTRO",
+      "detalle": "CAJA DE REGISTRO PREFABRICADA 12X24",
+      "cantidad": 15.0,
+      "unidad": "und",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260805-040",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs": "WBS-200",
+      "recurso": "MAT_TUB_PVC_160_CONEX",
+      "detalle": "TUBERIA PVC SAL DN 160MM ACOMETIDA",
+      "cantidad": 90.0,
+      "unidad": "m",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260805-041",
+      "fecha": "2026-08-05",
+      "rol": "Almacenero",
+      "wbs": "WBS-300",
+      "recurso": "MAT_CAJA_AGUA",
+      "detalle": "CAJA TERMOFORMADA MEDIDOR + ABRAZADERA",
+      "cantidad": 15.0,
+      "unidad": "und",
+      "cat": "AC_MAT",
+      "html": "almacenero.html"
+    },
+    {
+      "id": "LOG-20260805-042",
+      "fecha": "2026-08-05",
+      "rol": "Administradora",
+      "wbs": "WBS-200",
+      "recurso": "SUB_ENSAYOS_COMPAC",
+      "detalle": "SUBCONTRATO ENSAYOS DENSIDAD DE CAMPO",
+      "cantidad": 10.0,
+      "unidad": "und",
+      "cat": "AC_SUB",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260805-043",
+      "fecha": "2026-08-05",
+      "rol": "Administradora",
+      "wbs": "WBS-400",
+      "recurso": "EQ_CAMION_CISTERNA",
+      "detalle": "CAMION CISTERNA AGUA PRUEBAS HIDRAULICAS",
+      "cantidad": 8.0,
+      "unidad": "hm",
+      "cat": "AC_EQP",
+      "html": "administradora.html"
+    },
+    {
+      "id": "LOG-20260805-044",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-200",
+      "recurso": "01.02.07",
+      "detalle": "CONEXIONES DOMICILIARIAS ALCANTARILLADO (15 ACOMETIDAS)",
+      "cantidad": 15.0,
+      "unidad": "UND",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260805-045",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-300",
+      "recurso": "01.03.02",
+      "detalle": "CONEXIONES DOMICILIARIAS AGUA POTABLE (15 ACOMETIDAS)",
+      "cantidad": 15.0,
+      "unidad": "UND",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    },
+    {
+      "id": "LOG-20260805-046",
+      "fecha": "2026-08-05",
+      "rol": "Ing. de Campo",
+      "wbs": "WBS-400",
+      "recurso": "01.04.01",
+      "detalle": "PRUEBA HIDRAULICA TRAMO 1 REDES (25%)",
+      "cantidad": 0.25,
+      "unidad": "GLB",
+      "cat": "EV_PRODUCCION",
+      "html": "ing_campo.html"
+    }
+  ]
+}

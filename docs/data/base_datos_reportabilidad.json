@@ -1,0 +1,512 @@
+{
+  "metadata": {
+    "proyecto": "Redes Sanitarias de Agua Potable y Alcantarillado - Habilitación Urbana Los Cedros",
+    "codigo_proyecto": "HU-CEDROS-2026",
+    "version_esquema": "3.0.0",
+    "moneda": "PEN",
+    "fuente": "HTML → JSON canónico → Excel / Google Sheets"
+  },
+  "catalogos": {
+    "wbs": [
+      {
+        "codigo": "WBS-100",
+        "nombre": "Obras Preliminares, Trazo y Movilización",
+        "bac_pen": 8296.4,
+        "pv_acumulado_pen": 22900
+      },
+      {
+        "codigo": "WBS-200",
+        "nombre": "Red de Alcantarillado, Zanjas y Buzones",
+        "bac_pen": 380086.56,
+        "pv_acumulado_pen": 31170
+      },
+      {
+        "codigo": "WBS-300",
+        "nombre": "Red de Agua Potable y Conexiones Domiciliarias",
+        "bac_pen": 57565.2,
+        "pv_acumulado_pen": 0
+      },
+      {
+        "codigo": "WBS-400",
+        "nombre": "Pruebas Hidráulicas, Desinfección y Entrega",
+        "bac_pen": 9348.06,
+        "pv_acumulado_pen": 0
+      }
+    ],
+    "recursos": {
+      "mano_obra": {
+        "MO_CAPATAZ": {
+          "desc": "CAPATAZ",
+          "unit": "hh",
+          "precio": 32.5
+        },
+        "MO_OPERARIO": {
+          "desc": "OPERARIO",
+          "unit": "hh",
+          "precio": 26.8
+        },
+        "MO_OFICIAL": {
+          "desc": "OFICIAL",
+          "unit": "hh",
+          "precio": 22.4
+        },
+        "MO_PEON": {
+          "desc": "PEON",
+          "unit": "hh",
+          "precio": 20.1
+        }
+      },
+      "materiales": {
+        "MAT_ESTACA": {
+          "desc": "ESTACAS Y MADERA PARA TRAZO",
+          "unit": "pza",
+          "precio": 4.5
+        },
+        "MAT_PINTURA": {
+          "desc": "PINTURA SPRAY MARCADOR DE ZANJA",
+          "unit": "gla",
+          "precio": 18
+        },
+        "MAT_CORDEL": {
+          "desc": "CORDEL / NYLON",
+          "unit": "m",
+          "precio": 0.8
+        },
+        "MAT_ARENA_CAMAS": {
+          "desc": "ARENA FINA SELECCIONADA PARA CAMA E=0.10M",
+          "unit": "m3",
+          "precio": 45
+        },
+        "MAT_TUB_PVC_200": {
+          "desc": "TUBERIA PVC UF DN 200MM SERIE S-20 ALCANTARILLADO",
+          "unit": "m",
+          "precio": 42
+        },
+        "MAT_LUBRICANTE": {
+          "desc": "LUBRICANTE PARA TUBERIA CON ESPIGA Y CAMPANA",
+          "unit": "kg",
+          "precio": 24
+        },
+        "MAT_MATERIAL_PR": {
+          "desc": "MATERIAL DE PRÉSTAMO AFIRMADO PARA RELLENO COMPACTADO",
+          "unit": "m3",
+          "precio": 38
+        },
+        "MAT_AGUA": {
+          "desc": "AGUA PARA COMPACTACIÓN Y PRUEBAS",
+          "unit": "m3",
+          "precio": 12
+        },
+        "MAT_BUZON_PREF": {
+          "desc": "BUZON PREFABRICADO CONCRETO H=1.5-2.5M CON MARCO Y TAPA",
+          "unit": "und",
+          "precio": 1050
+        },
+        "MAT_CAJA_REGISTRO": {
+          "desc": "CAJA DE REGISTRO PREFABRICADA DE CONCRETO 12X24 WITH TAPA",
+          "unit": "und",
+          "precio": 145
+        },
+        "MAT_TUB_PVC_160_CONEX": {
+          "desc": "TUBERIA PVC SAL DN 160MM PARA ACOMETIDA ALCANTARILLADO",
+          "unit": "m",
+          "precio": 22
+        },
+        "MAT_TUB_PVC_110_AGUA": {
+          "desc": "TUBERIA PVC C-10 DN 110MM AGUA POTABLE",
+          "unit": "m",
+          "precio": 26.5
+        },
+        "MAT_ACCESORIOS_AGUA": {
+          "desc": "ACCESORIOS Y CODOS PVC AGUA 110MM (PROMEDIO/M)",
+          "unit": "glb",
+          "precio": 5
+        },
+        "MAT_CAJA_AGUA": {
+          "desc": "CAJA TERMOFORMADA PARA MEDIDOR + ABRAZADERA + LLAVE DE PASO",
+          "unit": "und",
+          "precio": 62
+        },
+        "MAT_TUB_HDPE_1_2": {
+          "desc": "TUBERIA HDPE 1/2 PARA ACOMETIDA AGUA",
+          "unit": "m",
+          "precio": 3.8
+        },
+        "MAT_HIPOCLORITO": {
+          "desc": "HIPOCLORITO DE CALCIO 70% PARA DESINFECCION",
+          "unit": "kg",
+          "precio": 35
+        },
+        "MAT_CARTEL": {
+          "desc": "CARTEL DE OBRA 3.60X2.40M",
+          "unit": "und",
+          "precio": 1200
+        },
+        "MAT_CASETA": {
+          "desc": "CASETA DE ALMACEN Y OFICINA PROVISIONAL",
+          "unit": "glb",
+          "precio": 2300
+        }
+      },
+      "equipos": {
+        "EQ_HERRAMIENTAS": {
+          "desc": "HERRAMIENTAS MANUALES",
+          "unit": "%MO",
+          "precio": 0
+        },
+        "EQ_EXCAVADORA": {
+          "desc": "EXCAVADORA SOBRE ORUGAS 140 HP",
+          "unit": "hm",
+          "precio": 185
+        },
+        "EQ_RETROEXCAVADORA": {
+          "desc": "RETROEXCAVADORA SOBRE LLANTAS 62 HP",
+          "unit": "hm",
+          "precio": 130
+        },
+        "EQ_PLANCHA": {
+          "desc": "PLANCHA COMPACTADORA 7 HP",
+          "unit": "hm",
+          "precio": 25
+        },
+        "EQ_RODILLO_CAMINANTE": {
+          "desc": "RODILLO VIBRATORIO CAMINANTE 1.5 TN",
+          "unit": "hm",
+          "precio": 45
+        },
+        "EQ_CAMION_CISTERNA": {
+          "desc": "CAMION CISTERNA 4X2 (AGUA) 2,000 GLN",
+          "unit": "hm",
+          "precio": 140
+        },
+        "EQ_CAMION_GRUAN": {
+          "desc": "CAMION GRUA 5 TN PARA MONTAJE DE BUZONES",
+          "unit": "hm",
+          "precio": 160
+        },
+        "EQ_BOMBA_PRUEBA": {
+          "desc": "BOMBA HIDROSTÁTICA DE PRUEBA DE PRESIÓN",
+          "unit": "hm",
+          "precio": 30
+        },
+        "EQ_ESTACION_TOTAL": {
+          "desc": "EQUIPO DE TOPOGRAFIA ESTACION TOTAL",
+          "unit": "hm",
+          "precio": 18
+        }
+      },
+      "subcontratos": {
+        "SUB_MOVILIZACION": {
+          "desc": "SUBCONTRATO DE MOVILIZACION Y DESMOVILIZACION DE MAQUINARIA",
+          "unit": "glb",
+          "precio": 4000
+        },
+        "SUB_ENSAYOS_COMPAC": {
+          "desc": "SUBCONTRATO DE ENSAYOS DE DENSIDAD DE CAMPO (PROCTOR/DENSIDAD)",
+          "unit": "und",
+          "precio": 80
+        },
+        "SUB_MONTAJE_BUZON": {
+          "desc": "SUBCONTRATO SERVICIO ASENTADO Y ANCLAJE BUZONES PREFABRICADOS",
+          "unit": "und",
+          "precio": 250
+        },
+        "SUB_PRUEBA_LAB": {
+          "desc": "SUBCONTRATO PRUEBAS DE LABORATORIO DE AGUA (BACTERIOLOGICO/FISICOQUIMICO)",
+          "unit": "glb",
+          "precio": 3800
+        }
+      }
+    }
+  },
+  "presupuesto_apu": [
+    {
+      "codigo_partida": "01.01",
+      "descripcion": "Obras Preliminares y Trabajos Provisionales",
+      "unidad": "GLB",
+      "metrado_meta": 1,
+      "precio_unitario_meta": 8296.4,
+      "costo_total_meta": 8296.4
+    },
+    {
+      "codigo_partida": "01.02.01",
+      "descripcion": "Trazo, Nivelación y Replanteo de Zanjas",
+      "unidad": "M",
+      "metrado_meta": 2400,
+      "precio_unitario_meta": 3.35,
+      "costo_total_meta": 8040
+    },
+    {
+      "codigo_partida": "01.02.02",
+      "descripcion": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+      "unidad": "M3",
+      "metrado_meta": 3840,
+      "precio_unitario_meta": 11.66,
+      "costo_total_meta": 44774.4
+    },
+    {
+      "codigo_partida": "01.02.03",
+      "descripcion": "Preparación y Colocación de Cama de Arena e=0.10m",
+      "unidad": "M",
+      "metrado_meta": 2400,
+      "precio_unitario_meta": 11.12,
+      "costo_total_meta": 26688
+    },
+    {
+      "codigo_partida": "01.02.04",
+      "descripcion": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+      "unidad": "M",
+      "metrado_meta": 1400,
+      "precio_unitario_meta": 55.51,
+      "costo_total_meta": 77714
+    },
+    {
+      "codigo_partida": "01.02.05",
+      "descripcion": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+      "unidad": "M3",
+      "metrado_meta": 3300,
+      "precio_unitario_meta": 28.54,
+      "costo_total_meta": 94182
+    },
+    {
+      "codigo_partida": "01.02.06",
+      "descripcion": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+      "unidad": "UND",
+      "metrado_meta": 32,
+      "precio_unitario_meta": 2500.73,
+      "costo_total_meta": 80023.36
+    },
+    {
+      "codigo_partida": "01.02.07",
+      "descripcion": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+      "unidad": "UND",
+      "metrado_meta": 120,
+      "precio_unitario_meta": 405.54,
+      "costo_total_meta": 48664.8
+    },
+    {
+      "codigo_partida": "01.03.01",
+      "descripcion": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+      "unidad": "M",
+      "metrado_meta": 1000,
+      "precio_unitario_meta": 38.76,
+      "costo_total_meta": 38760
+    },
+    {
+      "codigo_partida": "01.03.02",
+      "descripcion": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+      "unidad": "UND",
+      "metrado_meta": 120,
+      "precio_unitario_meta": 156.71,
+      "costo_total_meta": 18805.2
+    },
+    {
+      "codigo_partida": "01.04.01",
+      "descripcion": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+      "unidad": "GLB",
+      "metrado_meta": 1,
+      "precio_unitario_meta": 9348.06,
+      "costo_total_meta": 9348.06
+    }
+  ],
+  "registros_diarios": [
+    {
+      "id_registro": "LOG-20260726-92000",
+      "id_parte": "PARTE-2026-07-26-Tareador (Bildin)",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO",
+      "fecha_recepcion": null
+    },
+    {
+      "id_registro": "LOG-20260726-92000-DUP-2",
+      "id_parte": "PARTE-2026-07-26-Tareador (Bildin)",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "OBSERVADO_DUPLICADO",
+      "fecha_recepcion": null
+    },
+    {
+      "id_registro": "LOG-20260726-92000-DUP-3",
+      "id_parte": "PARTE-2026-07-26-Tareador (Bildin)",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "OBSERVADO_DUPLICADO",
+      "fecha_recepcion": null
+    },
+    {
+      "id_registro": "LEGACY-4",
+      "id_parte": "PARTE-2026-07-26-SIN_ROL",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "VALIDO",
+      "fecha_recepcion": null
+    },
+    {
+      "id_registro": "LOG-20260726-92000-DUP-5",
+      "id_parte": "PARTE-2026-07-26-Tareador (Bildin)",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "OBSERVADO_DUPLICADO",
+      "fecha_recepcion": null
+    },
+    {
+      "id_registro": "LOG-20260726-92000-DUP-6",
+      "id_parte": "PARTE-2026-07-26-Tareador (Bildin)",
+      "fecha": "2026-07-26",
+      "rol": "Tareador (Bildin)",
+      "wbs_codigo": "WBS-200",
+      "codigo_recurso_partida": "MO_OPERARIO",
+      "descripcion": "OPERARIO (2 pers. x 8h)",
+      "cantidad": 16,
+      "unidad": "hh",
+      "costo_unitario": 26.8,
+      "costo_total_pen": 428.8,
+      "categoria_evm": "AC_MO",
+      "origen_html": "tareador.html",
+      "estado_validacion": "OBSERVADO_DUPLICADO",
+      "fecha_recepcion": null
+    }
+  ],
+  "control_calidad": {
+    "registros_recibidos": 6,
+    "registros_validos": 2,
+    "registros_observados": 4,
+    "regla_duplicado": "solo se considera duplicado el mismo id_registro original"
+  },
+  "contrato": {
+    "version_esquema": "1.0.0",
+    "objetivo": "Contrato común entre formularios HTML, JSON, Excel y futura integración con Google Sheets",
+    "fuentes_html": {
+      "tareador.html": {
+        "rol": "Tareador (Bildin)",
+        "tipo_registro": "AC_MO",
+        "campos_captura": [
+          "fecha",
+          "wbs",
+          "codigoRecurso",
+          "cantidad",
+          "unidad",
+          "pu",
+          "costo",
+          "detalle"
+        ]
+      },
+      "almacenero.html": {
+        "rol": "Almacenero",
+        "tipo_registro": "AC_MAT",
+        "campos_captura": [
+          "fecha",
+          "wbs",
+          "codigoRecurso",
+          "cantidad",
+          "unidad",
+          "pu",
+          "costo",
+          "detalle"
+        ]
+      },
+      "administradora.html": {
+        "rol": "Administradora",
+        "tipo_registro": "AC_EQP",
+        "campos_captura": [
+          "fecha",
+          "wbs",
+          "codigoRecurso",
+          "cantidad",
+          "unidad",
+          "pu",
+          "costo",
+          "detalle"
+        ]
+      },
+      "ing_campo.html": {
+        "rol": "Ing. de Campo",
+        "tipo_registro": "EV_PRODUCCION",
+        "campos_captura": [
+          "fecha",
+          "wbs",
+          "codigoRecurso",
+          "cantidad",
+          "unidad",
+          "pu",
+          "costo",
+          "detalle"
+        ]
+      }
+    },
+    "entidad_captura_diaria": {
+      "id": "Identificador único generado por el formulario",
+      "fecha": "Fecha ISO yyyy-mm-dd",
+      "rol": "Rol responsable del registro",
+      "wbs": "Código WBS imputado",
+      "codigoRecurso": "Código de recurso o partida",
+      "detalle": "Descripción legible y ubicación/tramo cuando corresponda",
+      "cantidad": "Cantidad física, HH, HM o unidades",
+      "unidad": "Unidad de medida",
+      "pu": "Precio unitario meta",
+      "costo": "Cantidad por PU para AC o EV",
+      "tipo": "AC_MO, AC_MAT, AC_EQP, AC_SUB o EV_PRODUCCION",
+      "origen_html": "Archivo HTML que originó el registro",
+      "estado_validacion": "VALIDO, OBSERVADO o DUPLICADO"
+    },
+    "hojas_excel": [
+      "CONTROL",
+      "WBS",
+      "APU_PRESUPUESTO",
+      "REGISTROS_DIARIOS",
+      "EVM_WBS",
+      "CATALOGOS"
+    ],
+    "integracion_futura": {
+      "github": "Publicar HTML, JS, CSS y JSON maestro como sitio estático",
+      "google_sheets": "Recibir filas de REGISTROS_DIARIOS mediante Apps Script o API",
+      "dashboard": "Calcular EVM desde REGISTROS_DIARIOS y APU_PRESUPUESTO"
+    }
+  }
+}
