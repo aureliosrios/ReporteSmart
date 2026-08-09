@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let matMap = {};
     let eqpMap = {};
 
-    const wbsOptions = [
+    let wbsOptions = [
         { code: "WBS-100", name: "WBS-100: Obras Preliminares, Trazo y Movilización" },
         { code: "WBS-200", name: "WBS-200: Red de Alcantarillado, Zanjas y Buzones" },
         { code: "WBS-300", name: "WBS-300: Red de Agua Potable y Conexiones Domiciliarias" },
@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const DATA_PATH = 'data/';
-    const API_ENDPOINT = window.RO_API_ENDPOINT || 'http://localhost:8080/api/save-log';
+    const CATALOG_PATH = `${DATA_PATH}catalogos/`;
+    const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec';
 
     initApp();
 
@@ -139,6 +140,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.warn("Uso de base de datos offline:", err);
+        }
+
+        try {
+            const catalogResponses = await Promise.all([
+                fetch(`${CATALOG_PATH}wbs.json`),
+                fetch(`${CATALOG_PATH}recursos_mano_obra.json`),
+                fetch(`${CATALOG_PATH}recursos_almacen.json`),
+                fetch(`${CATALOG_PATH}recursos_equipos_servicios.json`),
+                fetch(`${CATALOG_PATH}partidas_ev.json`)
+            ]);
+            if (catalogResponses.every(response => response.ok)) {
+                const [wbs, manoObra, almacen, equiposServicios, partidas] = await Promise.all(catalogResponses.map(response => response.json()));
+                wbsOptions = wbs.map(row => ({ code: row.codigo, name: `${row.codigo}: ${row.nombre}` }));
+                presupuestoData = {
+                    ...presupuestoData,
+                    precios_recursos_maestros: {
+                        mano_obra: manoObra,
+                        materiales: almacen,
+                        equipos: equiposServicios.equipos || {},
+                        subcontratos: equiposServicios.subcontratos || {}
+                    },
+                    analisis_precios_unitarios: partidas.map(row => ({
+                        item: row.codigo_partida,
+                        descripcion: row.descripcion,
+                        unidad: row.unidad,
+                        metrado: row.metrado_meta,
+                        precio_unitario_directo: row.precio_unitario_meta,
+                        costo_total_partida_directo: row.costo_total_meta
+                    }))
+                };
+            }
+        } catch (err) {
+            console.warn("Catálogos separados no disponibles; se usa el presupuesto maestro:", err);
         }
 
         try {
