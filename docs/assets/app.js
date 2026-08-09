@@ -230,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
             origen_html: r.origen_html || `${location.pathname.split('/').pop()}`
         }));
 
-        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec';
+        const OFFICIAL_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec';
+        const apiUrl = window.RO_API_ENDPOINT || OFFICIAL_ENDPOINT;
 
         try {
             // Usamos Content-Type text/plain para evitar el preflight OPTIONS de CORS de Google Apps Script
