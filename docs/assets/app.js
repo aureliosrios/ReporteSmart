@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Usamos Content-Type text/plain para evitar el preflight OPTIONS de CORS de Google Apps Script
             await fetch(apiUrl, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(payload)
             });
