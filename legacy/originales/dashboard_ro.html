@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Central de Resultado Operativo (RO)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge" style="background: linear-gradient(135deg, #0284c7, #0369a1);">
+                <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div>
+                <h1>Dashboard de Resultado Operativo (RO) & Brechas IA</h1>
+                <p class="subtitle">Sala de Control de Residente de Obra e Ing. de Oficina Técnica (OT)</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> Hub Principal</a>
+            <button id="btn-export-db-dash" class="btn btn-primary"><i class="fa-solid fa-download"></i> Exportar DB (JSON)</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- KPIs -->
+        <div class="kpi-grid">
+            <div class="kpi-card glass-card border-blue">
+                <div class="kpi-header"><span>Valor Planificado (PV)</span><i class="fa-solid fa-calendar-day icon-blue"></i></div>
+                <div class="kpi-value" id="dash-pv">S/ 0.00</div>
+                <div class="kpi-sub">Programado acumulado a la fecha</div>
+            </div>
+            <div class="kpi-card glass-card border-green">
+                <div class="kpi-header"><span>Valor Ganado (EV)</span><i class="fa-solid fa-chart-line icon-green"></i></div>
+                <div class="kpi-value" id="dash-ev">S/ 0.00</div>
+                <div class="kpi-sub" id="dash-spi-sub">SPI: 1.00</div>
+            </div>
+            <div class="kpi-card glass-card border-purple">
+                <div class="kpi-header"><span>Costo Real Incurrido (AC)</span><i class="fa-solid fa-vault icon-purple"></i></div>
+                <div class="kpi-value" id="dash-ac">S/ 0.00</div>
+                <div class="kpi-sub" id="dash-cpi-sub">CPI: 1.00</div>
+            </div>
+            <div class="kpi-card glass-card border-orange">
+                <div class="kpi-header"><span>Proyección al Cierre (EAC)</span><i class="fa-solid fa-bullseye icon-orange"></i></div>
+                <div class="kpi-value" id="dash-eac">S/ 0.00</div>
+                <div class="kpi-sub" id="dash-desvio-sub">Desvío Meta: S/ 0.00</div>
+            </div>
+        </div>
+
+        <!-- TABLA 1: CUANTIFICACIÓN DETALLADA DE COSTOS POR WBS -->
+        <div class="card glass-card mt-4">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-calculator"></i> Cuantificación de Costos Reales ($AC$) y Valor Ganado ($EV$) por WBS</h3>
+                <p class="card-subtitle">Desglose de costos por componente (Mano de Obra, Materiales, Equipos) comparados contra la producción ejecutada</p>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Código WBS</th>
+                            <th>Descripción del WBS</th>
+                            <th>Costo MO (Bildin)</th>
+                            <th>Costo Materiales</th>
+                            <th>Costo Equipos/HM</th>
+                            <th>Total Costo ($AC$)</th>
+                            <th>Valor Ganado ($EV$)</th>
+                            <th>Diferencia ($EV - AC$)</th>
+                            <th>CPI Costo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-cuantificacion-wbs">
+                        <!-- Inyectado mediante JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TABLA 2: EVALUACIÓN EVM TRADICIONAL POR WBS -->
+        <div class="card glass-card mt-4">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-sitemap"></i> Resultado Operativo y Variación al Cierre ($EAC$) por WBS</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Código WBS</th>
+                            <th>Descripción del Frente / WBS</th>
+                            <th>Presupuesto BAC Meta</th>
+                            <th>Planificado (PV)</th>
+                            <th>Ganado (EV)</th>
+                            <th>Costo Real (AC)</th>
+                            <th>CPI (Costo)</th>
+                            <th>SPI (Plazo)</th>
+                            <th>EAC Proyectado</th>
+                            <th>Estado Brecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-wbs-evm">
+                        <!-- Inyectado mediante JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- AGENTE IA Y LOGS -->
+        <div class="card glass-card mt-4">
+            <div class="card-header flex-between">
+                <div>
+                    <h2><i class="fa-solid fa-robot"></i> Agente IA de Análisis de Brechas por WBS</h2>
+                    <p class="card-subtitle">Diagnóstico automático y causa raíz para la junta de los lunes</p>
+                </div>
+                <button id="btn-analizar-ia" class="btn btn-primary"><i class="fa-solid fa-sparkles"></i> Analizar con IA</button>
+            </div>
+            <div class="ai-results-grid mt-4">
+                <div class="ai-card border-alert">
+                    <div class="ai-card-title"><i class="fa-solid fa-triangle-exclamation"></i> Diagnóstico por Nodo WBS</div>
+                    <div id="ai-diag-text" class="ai-card-body">Presione el botón "Analizar con IA" para evaluar la base de datos actual.</div>
+                </div>
+                <div class="ai-card border-success">
+                    <div class="ai-card-title"><i class="fa-solid fa-lightbulb"></i> Plan de Mitigación Recomendado</div>
+                    <div id="ai-rec-text" class="ai-card-body">Esperando diagnóstico de brechas...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Dashboard Central de Resultado Operativo | Redes Sanitarias de Habilitación Urbana © 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

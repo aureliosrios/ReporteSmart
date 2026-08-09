@@ -1,0 +1,54 @@
+{
+  "version_esquema": "1.0.0",
+  "objetivo": "Contrato común entre formularios HTML, JSON, Excel y futura integración con Google Sheets",
+  "fuentes_html": {
+    "tareador.html": {
+      "rol": "Tareador (Bildin)",
+      "tipo_registro": "AC_MO",
+      "campos_captura": ["fecha", "wbs", "codigoRecurso", "cantidad", "unidad", "pu", "costo", "detalle"]
+    },
+    "almacenero.html": {
+      "rol": "Almacenero",
+      "tipo_registro": "AC_MAT",
+      "campos_captura": ["fecha", "wbs", "codigoRecurso", "cantidad", "unidad", "pu", "costo", "detalle"]
+    },
+    "administradora.html": {
+      "rol": "Administradora",
+      "tipo_registro": "AC_EQP",
+      "campos_captura": ["fecha", "wbs", "codigoRecurso", "cantidad", "unidad", "pu", "costo", "detalle"]
+    },
+    "ing_campo.html": {
+      "rol": "Ing. de Campo",
+      "tipo_registro": "EV_PRODUCCION",
+      "campos_captura": ["fecha", "wbs", "codigoRecurso", "cantidad", "unidad", "pu", "costo", "detalle"]
+    }
+  },
+  "entidad_captura_diaria": {
+    "id": "Identificador único generado por el formulario",
+    "fecha": "Fecha ISO yyyy-mm-dd",
+    "rol": "Rol responsable del registro",
+    "wbs": "Código WBS imputado",
+    "codigoRecurso": "Código de recurso o partida",
+    "detalle": "Descripción legible y ubicación/tramo cuando corresponda",
+    "cantidad": "Cantidad física, HH, HM o unidades",
+    "unidad": "Unidad de medida",
+    "pu": "Precio unitario meta",
+    "costo": "Cantidad por PU para AC o EV",
+    "tipo": "AC_MO, AC_MAT, AC_EQP, AC_SUB o EV_PRODUCCION",
+    "origen_html": "Archivo HTML que originó el registro",
+    "estado_validacion": "VALIDO, OBSERVADO o DUPLICADO"
+  },
+  "hojas_excel": [
+    "CONTROL",
+    "WBS",
+    "APU_PRESUPUESTO",
+    "REGISTROS_DIARIOS",
+    "EVM_WBS",
+    "CATALOGOS"
+  ],
+  "integracion_futura": {
+    "github": "Publicar HTML, JS, CSS y JSON maestro como sitio estático",
+    "google_sheets": "Recibir filas de REGISTROS_DIARIOS mediante Apps Script o API",
+    "dashboard": "Calcular EVM desde REGISTROS_DIARIOS y APU_PRESUPUESTO"
+  }
+}

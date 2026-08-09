@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Tareador (Bildin) - Reporte Diaria MO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-badge" style="background: linear-gradient(135deg, #0284c7, #2563eb);">
+                <i class="fa-solid fa-user-clock"></i>
+            </div>
+            <div>
+                <h1>Portal del Tareador (Bildin)</h1>
+                <p class="subtitle">Reporte de Mano de Obra ($HH$) por Categoría y Frente WBS</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-house"></i> Hub Principal</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="card glass-card">
+            <div class="form-header header-blue flex-between">
+                <div class="flex-align">
+                    <i class="fa-solid fa-user-check"></i>
+                    <div>
+                        <h3>Partes Diarios de Tareo de Personal</h3>
+                        <p>Imputación de Horas Hombre ($HH$) a los Nodos WBS</p>
+                    </div>
+                </div>
+                <div class="form-date-box">
+                    <label><i class="fa-regular fa-calendar"></i> Fecha:</label>
+                    <input type="date" id="form-date-tareador" class="form-control date-picker" required>
+                </div>
+            </div>
+
+            <!-- Tabla de Entradas Multi-Frente para Tareador -->
+            <div class="table-responsive">
+                <table class="data-table input-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Frente WBS</th>
+                            <th style="width: 35%;">Categoría del Trabajador</th>
+                            <th style="width: 15%;">N° Personas</th>
+                            <th style="width: 15%;">Horas ($HH$)</th>
+                            <th style="width: 5%;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows-tareador-only">
+                        <!-- Filas dinámicas -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-actions mt-4 flex-between">
+                <button type="button" id="btn-add-row-tareador" class="btn btn-secondary btn-lg">
+                    <i class="fa-solid fa-plus"></i> + Agregar Trabajador / Frente
+                </button>
+                <div class="info-summary-pill" id="summary-tareador-only">
+                    Total: <strong>0.00 HH</strong> | Costo: <strong>S/ 0.00</strong>
+                </div>
+                <button type="button" id="btn-save-tareador" class="btn btn-primary btn-lg">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Guardar Tareo Diario
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Portal Independiente del Tareador | Redes Sanitarias de Habilitación Urbana © 2026</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+{
+  "proyecto": {
+    "nombre": "Redes Sanitarias de Agua Potable y Alcantarillado - Habilitación Urbana Los Cedros",
+    "ubicación": "Lima, Perú",
+    "duracion_semanas": 8,
+    "duracion_dias_calendario": 60,
+    "moneda": "PEN",
+    "tipo_control": "Resultado Operativo (RO) con Integración Digital / IA",
+    "resumen_financiero": {
+      "costo_directo_total": 386600.0,
+      "gastos_generales_10pct": 38660.0,
+      "utilidad_8pct": 30928.0,
+      "valor_venta_subtotal_sin_igv": 456188.0,
+      "igv_18pct": 82113.84,
+      "precio_total_comercial_con_igv": 538301.84
+    },
+    "tipo_presupuesto": "Comercial de Licitación / Oferta Cliente"
+  },
+  "desglose_recursos_meta": {
+    "mano_de_obra": 115400.0,
+    "materiales": 182600.0,
+    "equipos_y_maquinaria": 72400.0,
+    "subcontratos_y_servicios": 15800.0,
+    "gastos_generales_directos": 1200.0
+  },
+  "frentes_trabajo": [
+    "Frente 1: Red de Alcantarillado y Buzones (Semanas 1-6)",
+    "Frente 2: Red de Agua Potable y Conexiones (Semanas 3-7)",
+    "Frente 3: Pruebas Hidráulicas, Empalmes y Entrega (Semanas 7-8)"
+  ],
+  "partidas_presupuestales": [
+    {
+      "codigo": "01.01",
+      "descripcion": "Obras Preliminares y Trabajos Provisionales",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "precio_unitario_meta": 14500.0,
+      "costo_total_meta": 14500.0,
+      "recursos": {
+        "MO": 4500.0,
+        "MAT": 3500.0,
+        "EQP": 2500.0,
+        "SUB": 4000.0
+      }
+    },
+    {
+      "codigo": "01.02.01",
+      "descripcion": "Trazo, Nivelación y Replanteo de Zanjas",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "precio_unitario_meta": 3.5,
+      "costo_total_meta": 8400.0,
+      "recursos": {
+        "MO": 5600.0,
+        "MAT": 800.0,
+        "EQP": 2000.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.02.02",
+      "descripcion": "Excavación de Zanja H=1.50m - 2.20m a Máquina (Terreno Normal)",
+      "unidad": "M3",
+      "metrado": 3840.0,
+      "precio_unitario_meta": 14.5,
+      "costo_total_meta": 55680.0,
+      "recursos": {
+        "MO": 8400.0,
+        "MAT": 0.0,
+        "EQP": 47280.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.02.03",
+      "descripcion": "Preparación y Colocación de Cama de Arena e=0.10m",
+      "unidad": "M",
+      "metrado": 2400.0,
+      "precio_unitario_meta": 12.8,
+      "costo_total_meta": 30720.0,
+      "recursos": {
+        "MO": 11200.0,
+        "MAT": 16800.0,
+        "EQP": 2720.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.02.04",
+      "descripcion": "Suministro e Instalación de Tubería PVC UF DN 200mm Serie S-20 para Alcantarillado",
+      "unidad": "M",
+      "metrado": 1400.0,
+      "precio_unitario_meta": 58.0,
+      "costo_total_meta": 81200.0,
+      "recursos": {
+        "MO": 18200.0,
+        "MAT": 61600.0,
+        "EQP": 1400.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.02.05",
+      "descripcion": "Relleno Compactado de Zanja en Capas de 0.20m con Maquinaria/Plancha",
+      "unidad": "M3",
+      "metrado": 3300.0,
+      "precio_unitario_meta": 16.0,
+      "costo_total_meta": 52800.0,
+      "recursos": {
+        "MO": 16500.0,
+        "MAT": 22300.0,
+        "EQP": 14000.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.02.06",
+      "descripcion": "Construcción de Buzones Prefabricados de Concreto h=1.50m - 2.50m (Inc. Marco y Tapa)",
+      "unidad": "UND",
+      "metrado": 32.0,
+      "precio_unitario_meta": 1850.0,
+      "costo_total_meta": 59200.0,
+      "recursos": {
+        "MO": 15200.0,
+        "MAT": 34200.0,
+        "EQP": 1800.0,
+        "SUB": 8000.0
+      }
+    },
+    {
+      "codigo": "01.02.07",
+      "descripcion": "Conexiones Domiciliarias de Alcantarillado (Caja de Registro + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "precio_unitario_meta": 320.0,
+      "costo_total_meta": 38400.0,
+      "recursos": {
+        "MO": 17400.0,
+        "MAT": 18600.0,
+        "EQP": 2400.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.03.01",
+      "descripcion": "Suministro e Instalación de Tubería PVC C-10 DN 110mm para Agua Potable",
+      "unidad": "M",
+      "metrado": 1000.0,
+      "precio_unitario_meta": 39.0,
+      "costo_total_meta": 39000.0,
+      "recursos": {
+        "MO": 11000.0,
+        "MAT": 27000.0,
+        "EQP": 1000.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.03.02",
+      "descripcion": "Conexiones Domiciliarias de Agua Potable (Caja de Agua + Abrazadera + Acometida)",
+      "unidad": "UND",
+      "metrado": 120.0,
+      "precio_unitario_meta": 135.0,
+      "costo_total_meta": 16250.0,
+      "recursos": {
+        "MO": 8100.0,
+        "MAT": 7650.0,
+        "EQP": 500.0,
+        "SUB": 0.0
+      }
+    },
+    {
+      "codigo": "01.04.01",
+      "descripcion": "Pruebas Hidráulicas de Redes de Agua y Alcantarillado + Desinfección",
+      "unidad": "GLB",
+      "metrado": 1.0,
+      "precio_unitario_meta": 12050.0,
+      "costo_total_meta": 12050.0,
+      "recursos": {
+        "MO": 4500.0,
+        "MAT": 3750.0,
+        "EQP": 0.0,
+        "SUB": 3800.0
+      }
+    }
+  ]
+}
