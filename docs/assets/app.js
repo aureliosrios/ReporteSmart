@@ -233,25 +233,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const OFFICIAL_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec';
         const apiUrl = window.RO_API_ENDPOINT || OFFICIAL_ENDPOINT;
 
-        try {
-            // Usamos Content-Type text/plain para evitar el preflight OPTIONS de CORS de Google Apps Script
-            await fetch(apiUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify(payload)
-            });
+        let sentSuccess = false;
 
-            dbLogs = mergeLogs(dbLogs, newRecords);
-            localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
+        // Método 1: sendBeacon (El más compatible en navegadores móviles y desktop para evitar bloqueos CORS)
+        if (navigator.sendBeacon) {
+            try {
+                const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+                sentSuccess = navigator.sendBeacon(apiUrl, blob);
+            } catch (e) {
+                console.warn("sendBeacon falló, intentando fetch:", e);
+            }
+        }
+
+        // Método 2: fetch con mode no-cors
+        if (!sentSuccess) {
+            try {
+                await fetch(apiUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
+                });
+                sentSuccess = true;
+            } catch (err) {
+                console.warn("fetch falló:", err);
+            }
+        }
+
+        dbLogs = mergeLogs(dbLogs, newRecords);
+        localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
+
+        if (sentSuccess) {
             alert(`✅ ${newRecords.length} registro(s) enviado(s) exitosamente a Google Sheets.`);
-            if (document.getElementById('tbody-wbs-evm')) updateDashboardViews();
-        } catch (err) {
-            console.warn("Servidor backend no disponible; guardando en almacenamiento web local:", err);
-            dbLogs = mergeLogs(dbLogs, newRecords);
-            localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
+        } else {
             alert(`⚠️ No se pudo conectar a Google Sheets. Guardado localmente.`);
         }
+
+        if (document.getElementById('tbody-wbs-evm')) updateDashboardViews();
     }
 
     // --- 1. PORTAL TAREADOR ---
