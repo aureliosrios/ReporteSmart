@@ -205,3 +205,175 @@ body.dark-theme {
 .ai-card-body { font-size: 0.9rem; line-height: 1.6; }
 
 .app-footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--text-secondary); border-top: 1px solid var(--border-color); margin-top: 3rem; }
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 767px) {
+    /* Header optimization */
+    .app-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        text-align: center;
+    }
+    .header-left {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .header-left h1 {
+        text-align: center;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .header-right .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Main content spacing */
+    .main-content {
+        padding: 1rem 0.5rem;
+    }
+    
+    .glass-card {
+        padding: 1rem 0.75rem;
+    }
+
+    /* Hide table headers */
+    .input-table thead {
+        display: none;
+    }
+
+    /* Transform table rows into cards */
+    .input-table tbody tr {
+        display: block;
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .input-table tbody td {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.4rem 0 !important;
+        border: none !important;
+        gap: 0.25rem;
+    }
+
+    /* Add labels dynamically on mobile */
+    .input-table tbody td::before {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.15rem;
+    }
+
+    /* Custom Labels for Tareador */
+    #rows-tareador-only td:nth-child(1)::before { content: "Frente WBS"; }
+    #rows-tareador-only td:nth-child(2)::before { content: "Categoría del Trabajador"; }
+    #rows-tareador-only td:nth-child(3)::before { content: "N° Personas"; }
+    #rows-tareador-only td:nth-child(4)::before { content: "Horas (HH)"; }
+    #rows-tareador-only td:nth-child(5)::before { content: "Acción"; }
+
+    /* Custom Labels for Almacenero */
+    #rows-almacenero-only td:nth-child(1)::before { content: "Frente WBS"; }
+    #rows-almacenero-only td:nth-child(2)::before { content: "Material / Insumo"; }
+    #rows-almacenero-only td:nth-child(3)::before { content: "Cantidad"; }
+    #rows-almacenero-only td:nth-child(4)::before { content: "P.U. Referencial"; }
+    #rows-almacenero-only td:nth-child(5)::before { content: "Acción"; }
+
+    /* Custom Labels for Administradora */
+    #rows-admin-only td:nth-child(1)::before { content: "Frente WBS"; }
+    #rows-admin-only td:nth-child(2)::before { content: "Equipo o Servicio"; }
+    #rows-admin-only td:nth-child(3)::before { content: "Cantidad / HM"; }
+    #rows-admin-only td:nth-child(4)::before { content: "P.U. Referencial"; }
+    #rows-admin-only td:nth-child(5)::before { content: "Acción"; }
+
+    /* Custom Labels for Ing. Campo */
+    #rows-campo-only td:nth-child(1)::before { content: "Frente WBS"; }
+    #rows-campo-only td:nth-child(2)::before { content: "Partida a Valorizar"; }
+    #rows-campo-only td:nth-child(3)::before { content: "Detalle / Tramo"; }
+    #rows-campo-only td:nth-child(4)::before { content: "Metrado Ejecutado"; }
+    #rows-campo-only td:nth-child(5)::before { content: "Unidad"; }
+    #rows-campo-only td:nth-child(6)::before { content: "Acción"; }
+
+    /* Action button / delete button styling */
+    .input-table tbody td .btn-del, 
+    .input-table tbody td .btn-icon-danger {
+        width: 100%;
+        padding: 0.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .input-table tbody td .btn-del::after,
+    .input-table tbody td .btn-icon-danger::after {
+        content: " Eliminar Fila";
+        font-size: 0.85rem;
+        font-family: var(--font-body);
+    }
+
+    /* Form actions layout */
+    .form-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch !important;
+    }
+    .form-actions button, 
+    .form-actions .info-summary-pill {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Flex headers inside cards */
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .form-date-box {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Hub Grid Cards optimization */
+    .hub-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .hub-card {
+        padding: 1.25rem;
+    }
+
+    /* Dashboard table responsive views */
+    .data-table th, .data-table td {
+        padding: 0.5rem 0.4rem;
+        font-size: 0.78rem;
+    }
+
+    /* AI results layout stack */
+    .ai-results-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* KPI grid adjust */
+    .kpi-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    .kpi-value {
+        font-size: 1.5rem;
+    }
+}
