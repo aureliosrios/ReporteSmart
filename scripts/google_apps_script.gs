@@ -28,17 +28,53 @@ function doPost(e) {
       ]);
     }
 
+    // Determinar el siguiente número secuencial para el ID LOG-YYYYMMDD-XXX
+    var nextNum = 1;
+    var todayStr = new Date().toISOString().split("T")[0].replace(/-/g, ""); // YYYYMMDD
+    var lastRow = sheet.getLastRow();
+    
+    if (lastRow >= 2) {
+      var ids = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+      for (var r = ids.length - 1; r >= 0; r--) {
+        var currId = ids[r][0].toString();
+        if (currId.indexOf("LOG-") === 0) {
+          var parts = currId.split("-");
+          if (parts.length === 3) {
+            var lastNum = parseInt(parts[2], 10);
+            if (!isNaN(lastNum)) {
+              nextNum = lastNum + 1;
+              break;
+            }
+          }
+        }
+      }
+    }
+
     var insertedCount = 0;
 
     for (var i = 0; i < records.length; i++) {
       var data = records[i];
       var nextRow = sheet.getLastRow() + 1;
 
-      var idVal = data.id || data.id_registro || ("LOG-" + new Date().getTime());
+      // Generación secuencial de ID Registro para evitar códigos UUID complejos
+      var numStr = nextNum.toString();
+      while (numStr.length < 3) {
+        numStr = "0" + numStr;
+      }
+      var idVal = "LOG-" + todayStr + "-" + numStr;
+      nextNum++;
+
       var fechaVal = data.fecha || new Date().toISOString().split("T")[0];
       var rolVal = data.rol || data.emisor_rol || "Sin Rol";
       var wbsVal = data.wbs || data.wbs_codigo || "WBS-100";
+      
+      // Forzar formato de texto para códigos numéricos como "01.01" para evitar que Sheets los convierta en números decimales (ej. 1.01) y rompa el VLOOKUP
       var codVal = data.codigoRecurso || data.codigo_recurso_partida || "MO_PEON";
+      codVal = String(codVal);
+      if (codVal.match(/^\d+(\.\d+)+$/) || !isNaN(codVal)) {
+        codVal = "'" + codVal;
+      }
+
       var detVal = data.detalle || data.descripcion || "";
       var cantVal = Number(data.cantidad) || 0.0;
       var undVal = data.unidad || "und";
