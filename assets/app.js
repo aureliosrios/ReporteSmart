@@ -243,9 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec';
 
         try {
-            // Usamos Content-Type text/plain para evitar el preflight OPTIONS de CORS de Google Apps Script
+            // Usamos Content-Type text/plain y mode: no-cors para evitar el preflight OPTIONS y el bloqueo por redirección de Google Apps Script
             await fetch(apiUrl, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(payload)
             });
