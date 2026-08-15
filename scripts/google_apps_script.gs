@@ -31,10 +31,10 @@ function doPost(e) {
     // Determinar el siguiente número secuencial para el ID LOG-YYYYMMDD-XXX
     var nextNum = 1;
     var todayStr = new Date().toISOString().split("T")[0].replace(/-/g, ""); // YYYYMMDD
-    var lastRow = sheet.getLastRow();
+    var startRow = sheet.getLastRow();
     
-    if (lastRow >= 2) {
-      var ids = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+    if (startRow >= 2) {
+      var ids = sheet.getRange(2, 1, startRow - 1, 1).getValues();
       for (var r = ids.length - 1; r >= 0; r--) {
         var currId = ids[r][0].toString();
         if (currId.indexOf("LOG-") === 0) {
@@ -54,6 +54,10 @@ function doPost(e) {
 
     for (var i = 0; i < records.length; i++) {
       var data = records[i];
+      
+      // Calcular la fila exacta de forma correlativa para evitar que getLastRow() devuelva
+      // un valor desactualizado dentro de bucles rápidos antes de que se limpie la caché de Sheets.
+      var currentRow = startRow + i + 1;
 
       // Generación secuencial de ID Registro para evitar códigos UUID complejos
       var numStr = nextNum.toString();
@@ -85,16 +89,20 @@ function doPost(e) {
         "", "", catVal, origVal
       ]);
 
-      var nextRow = sheet.getLastRow();
+      // Centrar el contenido de las columnas A, D, E y H en la fila insertada
+      sheet.getRange(currentRow, 1).setHorizontalAlignment("center"); // Col A (ID Registro)
+      sheet.getRange(currentRow, 4).setHorizontalAlignment("center"); // Col D (Código WBS)
+      sheet.getRange(currentRow, 5).setHorizontalAlignment("center"); // Col E (Código Recurso/Partida)
+      sheet.getRange(currentRow, 8).setHorizontalAlignment("center"); // Col H (Unidad)
 
       // Fórmulas en notación A1 limpia y alineada con la estructura del Excel
       // Busca en '05_MAESTRO_RECURSOS' (Col D: P.U. Meta Oficial) o '06_MAESTRO_PARTIDAS_EV' (Col F: P.U. Directo Meta)
-      var rangePU = sheet.getRange(nextRow, 9);
-      rangePU.setFormula("=IFERROR(VLOOKUP(E" + nextRow + ", '05_MAESTRO_RECURSOS'!A:D, 4, FALSE), IFERROR(VLOOKUP(E" + nextRow + ", '06_MAESTRO_PARTIDAS_EV'!B:F, 5, FALSE), 0))");
+      var rangePU = sheet.getRange(currentRow, 9);
+      rangePU.setFormula("=IFERROR(VLOOKUP(E" + currentRow + ", '05_MAESTRO_RECURSOS'!A:D, 4, FALSE), IFERROR(VLOOKUP(E" + currentRow + ", '06_MAESTRO_PARTIDAS_EV'!B:F, 5, FALSE), 0))");
       rangePU.setNumberFormat("S/ #,##0.00");
 
-      var rangeSubtotal = sheet.getRange(nextRow, 10);
-      rangeSubtotal.setFormula("=ROUND(G" + nextRow + " * I" + nextRow + ", 2)");
+      var rangeSubtotal = sheet.getRange(currentRow, 10);
+      rangeSubtotal.setFormula("=ROUND(G" + currentRow + " * I" + currentRow + ", 2)");
       rangeSubtotal.setNumberFormat("S/ #,##0.00");
 
       insertedCount++;
