@@ -50,7 +50,8 @@ function doPost(e) {
         "", "", catVal, origVal
       ]);
 
-      // Fórmulas en notación A1 limpia
+      // Fórmulas en notación A1 limpia y alineada con la estructura del Excel
+      // Busca en '05_MAESTRO_RECURSOS' (Col D: P.U. Meta Oficial) o '06_MAESTRO_PARTIDAS_EV' (Col F: P.U. Directo Meta)
       var rangePU = sheet.getRange(nextRow, 9);
       rangePU.setFormula("=IFERROR(VLOOKUP(E" + nextRow + ", '05_MAESTRO_RECURSOS'!A:D, 4, FALSE), IFERROR(VLOOKUP(E" + nextRow + ", '06_MAESTRO_PARTIDAS_EV'!B:F, 5, FALSE), 0))");
       rangePU.setNumberFormat("S/ #,##0.00");
@@ -64,7 +65,7 @@ function doPost(e) {
 
     return responseJSON({
       status: "SUCCESS",
-      message: "Se insertaron " + insertedCount + " registro(s) correctamente en la Pestaña 04 de Google Sheets",
+      message: "Se insertaron " + insertedCount + " registro(s) correctamente en la pestaña " + TAB_NAME_LOGS + " de Google Sheets.",
       count: insertedCount
     });
 
@@ -77,13 +78,20 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  return responseJSON({
-    status: "ONLINE",
-    proyecto: "Redes Sanitarias de Agua Potable y Alcantarillado",
-    pestana_destino: TAB_NAME_LOGS,
-    github_pages: "https://aureliosrios.github.io/ReporteSmart/",
-    timestamp: new Date().toISOString()
-  });
+  try {
+    return responseJSON({
+      status: "ONLINE",
+      proyecto: "Redes Sanitarias de Agua Potable y Alcantarillado",
+      pestana_destino: TAB_NAME_LOGS,
+      github_pages: "https://aureliosrios.github.io/ReporteSmart/",
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    return responseJSON({
+      status: "ERROR",
+      message: "Error en doGet: " + error.toString()
+    });
+  }
 }
 
 function responseJSON(data) {
