@@ -88,7 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Limpieza de URLs antiguas o rotas del localStorage para evitar conflictos en otras PCs
     const oldBrokenUrls = [
         'https://script.google.com/macros/s/AKfycbwecahQY_jC4kqtZiYkGSZKj5LRvgG4HHC1GOHUIvDF0obE6_kek_x8ebhZs_zd3Mp9/exec',
-        'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec'
+        'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec',
+        'https://script.google.com/macros/s/AKfycbxK63b9x3zv000PeM_jw6JkjrJYe0FiKxAtEWcarBYwJpR5dO2ckcpjK3aA3R9HKF0O/exec',
+        'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec'
     ];
     const storedEndpoint = localStorage.getItem('ro_api_endpoint');
     if (storedEndpoint && oldBrokenUrls.indexOf(storedEndpoint) !== -1) {
