@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tr = document.createElement('tr');
             tr.dataset.recordId = createRecordId('EV');
             const partidaOptions = presupuestoData.analisis_precios_unitarios.map(apu => 
-                `<option value="${apu.item}" data-pu="${apu.precio_unitario_directo}" data-unit="${apu.unidad}">${apu.item} - ${apu.descripcion} (${apu.unidad})</option>`
+                `<option value="${apu.item}" data-pu="${apu.precio_unitario_directo}" data-unit="${apu.unidad}" data-desc="${apu.descripcion}">${apu.item} - ${apu.descripcion} (${apu.unidad})</option>`
             ).join('');
 
             tr.innerHTML = `
@@ -528,9 +528,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const evCosto = metrado * pu;
 
                 if (metrado > 0) {
+                    const descPartida = opt.dataset.desc || '';
+                    const detalleCompuesto = (descPartida + ' - ' + tramo).toUpperCase();
                     recordsToSave.push({
                         id: getRecordId(tr), id_parte: `PARTE-${fecha}-CAMPO`, fecha, rol: "Ing. de Campo", wbs,
-                        codigoRecurso: itemCode, tipo: "EV_PRODUCCION", detalle: `Partida ${itemCode} - ${tramo}`,
+                        codigoRecurso: itemCode, tipo: "EV_PRODUCCION", detalle: detalleCompuesto,
                         cantidad: metrado, unidad, pu, costo: evCosto
                     });
                 }
