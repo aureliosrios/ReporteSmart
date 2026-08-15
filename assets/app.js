@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const DATA_PATH = 'data/';
     const CATALOG_PATH = `${DATA_PATH}catalogos/`;
-    const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec';
+    const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec';
 
     initApp();
 
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             origen_html: r.origen_html || `${location.pathname.split('/').pop()}`
         }));
 
-        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec';
+        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec';
 
         try {
             // Usamos Content-Type text/plain y mode: no-cors para evitar el preflight OPTIONS y el bloqueo por redirección de Google Apps Script
