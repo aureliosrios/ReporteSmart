@@ -85,6 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { code: "WBS-400", name: "WBS-400: Pruebas Hidráulicas, Desinfección y Entrega" }
     ];
 
+    // Limpieza de URLs antiguas o rotas del localStorage para evitar conflictos en otras PCs
+    const oldBrokenUrls = [
+        'https://script.google.com/macros/s/AKfycbwecahQY_jC4kqtZiYkGSZKj5LRvgG4HHC1GOHUIvDF0obE6_kek_x8ebhZs_zd3Mp9/exec',
+        'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec'
+    ];
+    const storedEndpoint = localStorage.getItem('ro_api_endpoint');
+    if (storedEndpoint && oldBrokenUrls.indexOf(storedEndpoint) !== -1) {
+        localStorage.removeItem('ro_api_endpoint');
+    }
+
     const DATA_PATH = 'data/';
     const CATALOG_PATH = `${DATA_PATH}catalogos/`;
     const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec';
