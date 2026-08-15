@@ -54,7 +54,6 @@ function doPost(e) {
 
     for (var i = 0; i < records.length; i++) {
       var data = records[i];
-      var nextRow = sheet.getLastRow() + 1;
 
       // Generación secuencial de ID Registro para evitar códigos UUID complejos
       var numStr = nextNum.toString();
@@ -85,6 +84,8 @@ function doPost(e) {
         idVal, fechaVal, rolVal, wbsVal, codVal, detVal, cantVal, undVal,
         "", "", catVal, origVal
       ]);
+
+      var nextRow = sheet.getLastRow();
 
       // Fórmulas en notación A1 limpia y alineada con la estructura del Excel
       // Busca en '05_MAESTRO_RECURSOS' (Col D: P.U. Meta Oficial) o '06_MAESTRO_PARTIDAS_EV' (Col F: P.U. Directo Meta)
