@@ -6,6 +6,27 @@
 
 var TAB_NAME_LOGS = "04_LOG_FIELD_ENTRIES";
 
+// Si abres Apps Script desde tu Google Sheet (Extensiones > Apps Script), déjalo en null.
+// Si deseas forzar una hoja específica, puedes colocar su ID o URL completa aquí:
+var SPREADSHEET_ID_OR_URL = null;
+
+function getSpreadsheet() {
+  try {
+    if (SPREADSHEET_ID_OR_URL) {
+      if (SPREADSHEET_ID_OR_URL.indexOf("https://") === 0) {
+        return SpreadsheetApp.openByUrl(SPREADSHEET_ID_OR_URL);
+      } else {
+        return SpreadsheetApp.openById(SPREADSHEET_ID_OR_URL);
+      }
+    }
+    var active = SpreadsheetApp.getActiveSpreadsheet();
+    if (active) return active;
+  } catch (err) {
+    console.error("Error al obtener hoja:", err);
+  }
+  return null;
+}
+
 function doPost(e) {
   try {
     if (!e || !e.postData || !e.postData.contents) {
@@ -15,7 +36,14 @@ function doPost(e) {
     var rawContent = JSON.parse(e.postData.contents);
     var records = Array.isArray(rawContent) ? rawContent : [rawContent];
 
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = getSpreadsheet();
+    if (!ss) {
+      return responseJSON({ 
+        status: "ERROR", 
+        message: "No se pudo acceder al Google Sheet activo. Asegúrate de abrir Apps Script desde el menú Extensiones > Apps Script de tu hoja de cálculo actual." 
+      });
+    }
+
     var sheet = ss.getSheetByName(TAB_NAME_LOGS);
 
     if (!sheet) {
