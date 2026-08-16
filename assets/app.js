@@ -826,40 +826,65 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.style.display = 'block';
         if (noDataDiv) noDataDiv.style.display = 'none';
 
-        // Recopilar todas las fechas únicas y ordenarlas
-        const fechasSet = new Set();
-        [...evLogs, ...acLogs].forEach(l => fechasSet.add(l.fecha));
-        const fechas = [...fechasSet].sort();
+        // Recopilar todas las fechas únicas reales y ordenarlas
+        const fechasRealesSet = new Set();
+        [...evLogs, ...acLogs].forEach(l => fechasRealesSet.add(l.fecha));
+        const fechasReales = [...fechasRealesSet].sort();
 
-        // Calcular PV diario simulado: distribución lineal del PV total
-        // entre la primera y última fecha de registro
-        const totalPV = evm.totalBAC;
-        const numDias = fechas.length;
-        const pvDiario = numDias > 1 ? totalPV / numDias : totalPV;
+        // Obtener la fecha de inicio del proyecto (primer registro) y fin de proyecto teórica
+        const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
+        const fechaInicioStr = fechasReales[0];
+        const fechaUltimoRegistro = fechasReales[fechasReales.length - 1];
 
-        // Construir mapas de EV y AC diario por fecha
+        // Generar el rango completo de fechas de la obra (ej. 60 días)
+        const fechasProyecto = [];
+        const inicioDate = new Date(fechaInicioStr + 'T00:00:00');
+        for (let i = 0; i < duracionDias; i++) {
+            const d = new Date(inicioDate);
+            d.setDate(inicioDate.getDate() + i);
+            const yyyy = d.getFullYear();
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            fechasProyecto.push(`${yyyy}-${mm}-${dd}`);
+        }
+
+        // Construir mapas de EV y AC diario inicializados para todo el rango del proyecto
         const evPorFecha  = {};
         const acPorFecha  = {};
-        fechas.forEach(f => { evPorFecha[f] = 0; acPorFecha[f] = 0; });
+        fechasProyecto.forEach(f => { evPorFecha[f] = 0; acPorFecha[f] = 0; });
 
+        // Llenar datos diarios
         evLogs.forEach(l => { if (evPorFecha[l.fecha] !== undefined) evPorFecha[l.fecha] += (l.costo || 0); });
         acLogs.forEach(l => { if (acPorFecha[l.fecha] !== undefined) acPorFecha[l.fecha] += (l.costo || 0); });
+
+        // Distribución lineal del PV en la duración total del proyecto
+        const totalPV = evm.totalBAC;
+        const pvDiario = totalPV / duracionDias;
 
         // Acumular series
         const labelsDates = [];
         const dataPV = [], dataEV = [], dataAC = [];
         let cumPV = 0, cumEV = 0, cumAC = 0;
 
-        fechas.forEach((f, i) => {
+        fechasProyecto.forEach((f, i) => {
             cumPV += pvDiario;
-            cumEV += evPorFecha[f];
-            cumAC += acPorFecha[f];
+            dataPV.push(parseFloat(cumPV.toFixed(2)));
+
+            // Solo acumular y graficar EV y AC hasta el último día que ha reportado campo real
+            if (f <= fechaUltimoRegistro) {
+                cumEV += evPorFecha[f];
+                cumAC += acPorFecha[f];
+                dataEV.push(parseFloat(cumEV.toFixed(2)));
+                dataAC.push(parseFloat(cumAC.toFixed(2)));
+            } else {
+                // null en Chart.js corta la línea para indicar "por ejecutar"
+                dataEV.push(null);
+                dataAC.push(null);
+            }
+
             // Formatear la etiqueta de fecha (YYYY-MM-DD -> DD/MM)
             const parts = f.split('-');
             labelsDates.push(parts.length === 3 ? `${parts[2]}/${parts[1]}` : f);
-            dataPV.push(parseFloat(cumPV.toFixed(2)));
-            dataEV.push(parseFloat(cumEV.toFixed(2)));
-            dataAC.push(parseFloat(cumAC.toFixed(2)));
         });
 
         // Destruir instancia anterior si existe
@@ -870,18 +895,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const ctx = canvas.getContext('2d');
 
-        // Gradientes
+        // Gradientes con colores industriales de construcción
         const gradPV = ctx.createLinearGradient(0, 0, 0, 340);
-        gradPV.addColorStop(0, 'rgba(56, 189, 248, 0.35)');
-        gradPV.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+        gradPV.addColorStop(0, 'rgba(29, 78, 216, 0.25)'); // Azul Marino Obra
+        gradPV.addColorStop(1, 'rgba(29, 78, 216, 0.0)');
 
         const gradEV = ctx.createLinearGradient(0, 0, 0, 340);
-        gradEV.addColorStop(0, 'rgba(74, 222, 128, 0.35)');
-        gradEV.addColorStop(1, 'rgba(74, 222, 128, 0.0)');
+        gradEV.addColorStop(0, 'rgba(234, 179, 8, 0.25)'); // Amarillo Caterpillar
+        gradEV.addColorStop(1, 'rgba(234, 179, 8, 0.0)');
 
         const gradAC = ctx.createLinearGradient(0, 0, 0, 340);
-        gradAC.addColorStop(0, 'rgba(196, 122, 245, 0.35)');
-        gradAC.addColorStop(1, 'rgba(196, 122, 245, 0.0)');
+        gradAC.addColorStop(0, 'rgba(234, 88, 12, 0.25)'); // Naranja de Seguridad
+        gradAC.addColorStop(1, 'rgba(234, 88, 12, 0.0)');
 
         sCurveChartInstance = new Chart(ctx, {
             type: 'line',
@@ -891,38 +916,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     {
                         label: 'PV — Valor Planificado (S/)',
                         data: dataPV,
-                        borderColor: '#38bdf8',
+                        borderColor: '#1d4ed8', // Azul Marino Obra
                         backgroundColor: gradPV,
                         borderWidth: 2.5,
-                        pointBackgroundColor: '#38bdf8',
-                        pointRadius: numDias <= 15 ? 5 : numDias <= 40 ? 3 : 2,
-                        pointHoverRadius: 7,
+                        pointBackgroundColor: '#1d4ed8',
+                        pointRadius: 0, // No pintar puntos para una curva de 60 días limpia, solo en el hover
+                        pointHoverRadius: 6,
                         fill: true,
-                        tension: 0.4
+                        tension: 0.2
                     },
                     {
                         label: 'EV — Valor Ganado (S/)',
                         data: dataEV,
-                        borderColor: '#4ade80',
+                        borderColor: '#eab308', // Amarillo Caterpillar
                         backgroundColor: gradEV,
                         borderWidth: 2.5,
-                        pointBackgroundColor: '#4ade80',
-                        pointRadius: numDias <= 15 ? 5 : numDias <= 40 ? 3 : 2,
-                        pointHoverRadius: 7,
+                        pointBackgroundColor: '#eab308',
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
                         fill: true,
-                        tension: 0.4
+                        tension: 0.2
                     },
                     {
                         label: 'AC — Costo Real (S/)',
                         data: dataAC,
-                        borderColor: '#c47af5',
+                        borderColor: '#ea580c', // Naranja de Seguridad
                         backgroundColor: gradAC,
                         borderWidth: 2.5,
-                        pointBackgroundColor: '#c47af5',
-                        pointRadius: numDias <= 15 ? 5 : numDias <= 40 ? 3 : 2,
-                        pointHoverRadius: 7,
+                        pointBackgroundColor: '#ea580c',
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
                         fill: true,
-                        tension: 0.4
+                        tension: 0.2
                     }
                 ]
             },
@@ -946,10 +971,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(15, 23, 42, 0.92)',
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
                         titleColor: '#e2e8f0',
                         bodyColor: '#94a3b8',
-                        borderColor: 'rgba(148,163,184,0.2)',
+                        borderColor: 'rgba(148,163,184,0.15)',
                         borderWidth: 1,
                         padding: 12,
                         titleFont: { family: 'Outfit', size: 13, weight: '600' },
@@ -957,6 +982,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         callbacks: {
                             label: (context) => {
                                 const val = context.parsed.y;
+                                if (val === null || val === undefined) return null;
                                 return ` ${context.dataset.label.split(' — ')[0]}: S/ ${val.toLocaleString('es-PE', { minimumFractionDigits: 2 })}`;
                             }
                         }
@@ -964,17 +990,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 scales: {
                     x: {
-                        grid: { color: 'rgba(148,163,184,0.08)', drawBorder: false },
+                        grid: { color: 'rgba(148,163,184,0.05)', drawBorder: false },
                         ticks: {
                             color: '#64748b',
-                            font: { family: 'Outfit', size: 11 },
+                            font: { family: 'Outfit', size: 10 },
                             maxRotation: 45,
                             autoSkip: true,
-                            maxTicksLimit: 20
+                            maxTicksLimit: 12
                         }
                     },
                     y: {
-                        grid: { color: 'rgba(148,163,184,0.08)', drawBorder: false },
+                        grid: { color: 'rgba(148,163,184,0.05)', drawBorder: false },
                         ticks: {
                             color: '#64748b',
                             font: { family: 'Outfit', size: 11 },
