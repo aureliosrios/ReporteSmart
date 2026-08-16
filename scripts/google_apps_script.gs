@@ -153,6 +153,7 @@ function doGet(e) {
   try {
     return responseJSON({
       status: "ONLINE",
+      version: "1.0.3",
       proyecto: "Redes Sanitarias de Agua Potable y Alcantarillado",
       pestana_destino: TAB_NAME_LOGS,
       github_pages: "https://aureliosrios.github.io/ReporteSmart/",
