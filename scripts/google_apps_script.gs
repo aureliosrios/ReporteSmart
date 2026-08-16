@@ -247,3 +247,85 @@ function forzarAutorizacion() {
   var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1nlN-U7iJFBlGNS-q0xBxSzJWSDI2uMr_dCZ2eU6W3hE/edit");
   Logger.log("✅ Documento abierto con éxito: " + ss.getName());
 }
+
+// Macro para importar la base de datos sintética del 01/08 al 15/08 directamente desde GitHub
+function importarBaseSinteticaDesdeGithub() {
+  var url = "https://aureliosrios.github.io/ReporteSmart/data/base_datos_reportabilidad.json";
+  Logger.log("📥 Descargando base de datos sintética desde GitHub Pages...");
+  
+  try {
+    var response = UrlFetchApp.fetch(url);
+    var json = JSON.parse(response.getContentText());
+    var logs = json.registros_diarios;
+    
+    if (!logs || logs.length === 0) {
+      Logger.log("❌ No se encontraron registros en el JSON.");
+      return;
+    }
+    
+    Logger.log("✅ Se descargaron " + logs.length + " registros.");
+    
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName("04_LOG_FIELD_ENTRIES");
+    
+    if (!sheet) {
+      Logger.log("❌ Pestaña '04_LOG_FIELD_ENTRIES' no encontrada.");
+      return;
+    }
+    
+    // 1. Limpiar registros antiguos (fila 2 en adelante)
+    var lastRow = sheet.getLastRow();
+    if (lastRow >= 2) {
+      sheet.deleteRows(2, lastRow - 1);
+    }
+    Logger.log("🧹 Pestaña 04_LOG_FIELD_ENTRIES limpiada.");
+    
+    // 2. Preparar el array de datos
+    var rowsToWrite = [];
+    for (var i = 0; i < logs.length; i++) {
+      var log = logs[i];
+      
+      // Parsear fecha yyyy-mm-dd a objeto Date de Google Sheets
+      var dateParts = log.fecha.split("-");
+      var dateObj = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+      
+      // Generar fórmulas
+      var rowNum = i + 2; // Inicia en fila 2
+      var formulaPU = "=IFERROR(VLOOKUP(E" + rowNum + "; '05_MAESTRO_RECURSOS'!A:D; 4; FALSE); IFERROR(VLOOKUP(E" + rowNum + "; '06_MAESTRO_PARTIDAS_EV'!B:F; 5; FALSE); 0))";
+      var formulaCosto = "=ROUND(G" + rowNum + " * I" + rowNum + "; 2)";
+      
+      rowsToWrite.push([
+        log.id_registro || log.id,
+        dateObj, // Date object para que MAX funcione en Google Sheets
+        log.rol,
+        log.wbs,
+        log.codigoRecurso || log.codigo_recurso_partida,
+        log.detalle || log.descripcion,
+        Number(log.cantidad) || 0,
+        log.unidad,
+        formulaPU,
+        formulaCosto,
+        log.tipo || log.categoria_evm,
+        log.origen_html
+      ]);
+    }
+    
+    // 3. Escribir todas las filas en un solo bloque (muy rápido)
+    var range = sheet.getRange(2, 1, rowsToWrite.length, 12);
+    range.setValues(rowsToWrite);
+    
+    // Formatear columna B como fecha
+    sheet.getRange(2, 2, rowsToWrite.length, 1).setNumberFormat("yyyy-mm-dd");
+    
+    // Centrar columnas A, D, E, H
+    sheet.getRange(2, 1, rowsToWrite.length, 1).setHorizontalAlignment("center");
+    sheet.getRange(2, 4, rowsToWrite.length, 1).setHorizontalAlignment("center");
+    sheet.getRange(2, 5, rowsToWrite.length, 1).setHorizontalAlignment("center");
+    sheet.getRange(2, 8, rowsToWrite.length, 1).setHorizontalAlignment("center");
+    
+    Logger.log("🚀 ¡Importación completada! Se insertaron " + rowsToWrite.length + " filas con éxito.");
+    
+  } catch (error) {
+    Logger.log("❌ Error en la importación: " + error.toString());
+  }
+}
