@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const unique = new Map();
         sources.flat().map(normalizeLog).filter(log => log && log.estado_validacion !== 'OBSERVADO_DUPLICADO').forEach(log => {
             const key = String(log.id);
-            if (!unique.has(key)) unique.set(key, log);
+            unique.set(key, log);
         });
         return [...unique.values()];
     }
