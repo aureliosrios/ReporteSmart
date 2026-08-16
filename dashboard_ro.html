@@ -54,6 +54,21 @@
             </div>
         </div>
 
+        <!-- CURVA S: PV, EV, AC ACUMULADO -->
+        <div class="card glass-card mt-4">
+            <div class="card-header">
+                <h3><i class="fa-solid fa-chart-area"></i> Curva S — Seguimiento EVM Acumulado: PV vs. EV vs. AC</h3>
+                <p class="card-subtitle">Evolución diaria acumulada del Valor Planificado (PV), Valor Ganado (EV) y Costo Real (AC) del proyecto</p>
+            </div>
+            <div style="position:relative; height:360px; padding: 1rem 0.5rem 0.5rem;">
+                <canvas id="chart-scurve"></canvas>
+            </div>
+            <div id="scurve-no-data" style="display:none; text-align:center; padding:2rem; color:var(--text-muted, #94a3b8);">
+                <i class="fa-solid fa-chart-area" style="font-size:2.5rem; opacity:0.3;"></i>
+                <p style="margin-top:0.75rem;">Sin registros de campo disponibles aún.<br>Complete reportes diarios para visualizar la Curva S.</p>
+            </div>
+        </div>
+
         <!-- TABLA 1: CUANTIFICACIÓN DETALLADA DE COSTOS POR WBS -->
         <div class="card glass-card mt-4">
             <div class="card-header">
