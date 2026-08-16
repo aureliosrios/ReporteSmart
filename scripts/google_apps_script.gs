@@ -179,6 +179,15 @@ function probarConexion() {
     var sheet = ss.getSheetByName(TAB_NAME_LOGS);
     if (sheet) {
       Logger.log("✅ Pestaña encontrada: " + TAB_NAME_LOGS + " con " + sheet.getLastRow() + " filas.");
+      try {
+        // Intentar escribir un valor de prueba en una celda temporal y luego borrarlo
+        var tempRange = sheet.getRange("Z1");
+        tempRange.setValue("TEST_WRITE");
+        tempRange.clearContent();
+        Logger.log("✅ Permiso de ESCRITURA confirmado con éxito.");
+      } catch (writeErr) {
+        Logger.log("❌ ERROR DE ESCRITURA: Tu cuenta no tiene permisos de Editor en este documento. Detalle: " + writeErr.toString());
+      }
     } else {
       Logger.log("⚠️ La pestaña " + TAB_NAME_LOGS + " no existe aún (se creará automáticamente).");
     }
