@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'https://script.google.com/macros/s/AKfycbwecahQY_jC4kqtZiYkGSZKj5LRvgG4HHC1GOHUIvDF0obE6_kek_x8ebhZs_zd3Mp9/exec',
         'https://script.google.com/macros/s/AKfycbzpFQScHLEAe6_YdJuozbDtnIa_Wbr1JFmkzeexy1sVNv_mRr0gFOvdJ--Eb9YVxCCB/exec',
         'https://script.google.com/macros/s/AKfycbxK63b9x3zv000PeM_jw6JkjrJYe0FiKxAtEWcarBYwJpR5dO2ckcpjK3aA3R9HKF0O/exec',
-        'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec'
+        'https://script.google.com/macros/s/AKfycbyNDuJGaES1RMLoR82uC0qUtxZDKfixPsh5v4sD0IhE1EC5JOJwZTye5mjLdG3i3cbI/exec',
+        'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec'
     ];
     const storedEndpoint = localStorage.getItem('ro_api_endpoint');
     if (storedEndpoint && oldBrokenUrls.indexOf(storedEndpoint) !== -1) {
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const DATA_PATH = 'data/';
     const CATALOG_PATH = `${DATA_PATH}catalogos/`;
-    const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec';
+    const API_ENDPOINT = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbzTWtvYvXmWMLoQdADUULNIRXO5ki-OmBHwbJIdeqn5ZIPE5qupFsTHftXid0Jfvze6/exec';
 
     initApp();
 
@@ -242,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             origen_html: r.origen_html || `${location.pathname.split('/').pop()}`
         }));
 
-        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec';
+        const apiUrl = window.RO_API_ENDPOINT || localStorage.getItem('ro_api_endpoint') || 'https://script.google.com/macros/s/AKfycbzTWtvYvXmWMLoQdADUULNIRXO5ki-OmBHwbJIdeqn5ZIPE5qupFsTHftXid0Jfvze6/exec';
 
         try {
             // Usamos Content-Type text/plain y mode: no-cors para evitar el preflight OPTIONS y el bloqueo por redirección de Google Apps Script

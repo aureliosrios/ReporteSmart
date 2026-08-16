@@ -51,14 +51,14 @@ En tu archivo JavaScript del sitio (`app.js`), la variable global con la URL act
 
 ```javascript
 // Configuración de endpoint activa de Google Sheets en app.js
-window.RO_API_ENDPOINT = "https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec";
+window.RO_API_ENDPOINT = "https://script.google.com/macros/s/AKfycbzTWtvYvXmWMLoQdADUULNIRXO5ki-OmBHwbJIdeqn5ZIPE5qupFsTHftXid0Jfvze6/exec";
 ```
 
 ### Opción B (Prueba Rápida desde Consola del Navegador)
 Si estás probando con tus alumnos en clase, pueden abrir la consola de su navegador (`F12`) en `https://aureliosrios.github.io/ReporteSmart/` y ejecutar:
 
 ```javascript
-localStorage.setItem('ro_api_endpoint', 'https://script.google.com/macros/s/AKfycbwr7q4wcOR_bmCsDUMudFPkU42vi1NKrYfCROwzMacGoKzN2obnBsb-a1-p82FEjX1V/exec');
+localStorage.setItem('ro_api_endpoint', 'https://script.google.com/macros/s/AKfycbzTWtvYvXmWMLoQdADUULNIRXO5ki-OmBHwbJIdeqn5ZIPE5qupFsTHftXid0Jfvze6/exec');
 ```
 
 ---
