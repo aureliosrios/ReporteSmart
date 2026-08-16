@@ -880,12 +880,13 @@ document.addEventListener('DOMContentLoaded', () => {
         [...evLogs, ...acLogs].forEach(l => fechasRealesSet.add(l.fecha));
         const fechasReales = [...fechasRealesSet].sort();
 
-        // Obtener la fecha de inicio del proyecto (primer registro) y fin de proyecto teórica
-        const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
         const fechaInicioStr = fechasReales[0];
         const fechaLimite = fechaCorte || fechasReales[fechasReales.length - 1];
 
-        // Generar el rango completo de fechas de la obra (ej. 60 días)
+        const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
+        const totalPV = evm.totalBAC;
+
+        // Generar el rango completo de fechas del proyecto (ej. 60 días) para proyectar todo el PV
         const fechasProyecto = [];
         const inicioDate = new Date(fechaInicioStr + 'T00:00:00');
         for (let i = 0; i < duracionDias; i++) {
@@ -897,36 +898,24 @@ document.addEventListener('DOMContentLoaded', () => {
             fechasProyecto.push(`${yyyy}-${mm}-${dd}`);
         }
 
-        // Construir mapas de EV y AC diario inicializados para todo el rango del proyecto
-        const evPorFecha  = {};
-        const acPorFecha  = {};
-        fechasProyecto.forEach(f => { evPorFecha[f] = 0; acPorFecha[f] = 0; });
-
-        // Llenar datos diarios
-        evLogs.forEach(l => { if (evPorFecha[l.fecha] !== undefined) evPorFecha[l.fecha] += (l.costo || 0); });
-        acLogs.forEach(l => { if (acPorFecha[l.fecha] !== undefined) acPorFecha[l.fecha] += (l.costo || 0); });
-
-        // Distribución lineal del PV en la duración total del proyecto
-        const totalPV = evm.totalBAC;
-        const pvDiario = totalPV / duracionDias;
-
-        // Acumular series
+        // Acumular series basándose en el rango completo del proyecto
         const labelsDates = [];
         const dataPV = [], dataEV = [], dataAC = [];
-        let cumPV = 0, cumEV = 0, cumAC = 0;
 
         fechasProyecto.forEach((f, i) => {
-            cumPV += pvDiario;
-            dataPV.push(parseFloat(cumPV.toFixed(2)));
+            // PV acumulado lineal para el día i + 1
+            const pvAcumulado = Math.min(totalPV, (totalPV / duracionDias) * (i + 1));
+            dataPV.push(parseFloat(pvAcumulado.toFixed(2)));
 
-            // Solo acumular y graficar EV y AC hasta la fecha límite seleccionada
+            // Solo graficar EV y AC hasta la fecha límite seleccionada (fecha de corte)
             if (f <= fechaLimite) {
-                cumEV += evPorFecha[f];
-                cumAC += acPorFecha[f];
-                dataEV.push(parseFloat(cumEV.toFixed(2)));
-                dataAC.push(parseFloat(cumAC.toFixed(2)));
+                // Acumular todos los registros reales de forma retroactiva hasta la fecha f
+                const evHastaFecha = evLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
+                const acHastaFecha = acLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
+                dataEV.push(parseFloat(evHastaFecha.toFixed(2)));
+                dataAC.push(parseFloat(acHastaFecha.toFixed(2)));
             } else {
-                // null en Chart.js corta la línea para indicar "por ejecutar"
+                // null en Chart.js corta la línea para indicar el periodo restante/futuro
                 dataEV.push(null);
                 dataAC.push(null);
             }
