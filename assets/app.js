@@ -107,6 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initApp();
 
     function readLocalLogs() {
+        // En el dashboard no leemos borradores del localStorage, solo base oficial
+        if (location.pathname.indexOf('dashboard') !== -1 || document.getElementById('tbody-wbs-evm')) {
+            return [];
+        }
         try {
             const raw = JSON.parse(localStorage.getItem('ro_unified_logs')) || [];
             return raw.map(normalizeLog).filter(Boolean);
