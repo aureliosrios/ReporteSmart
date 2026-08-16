@@ -745,10 +745,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        (baseDatosData?.nodos_wbs_estructura || []).forEach(row => {
-            if (definitions[row.codigo]) {
-                definitions[row.codigo].pv = Number(row.pv_acumulado_pen) || 0;
-                if (row.nombre) definitions[row.codigo].name = row.nombre;
+        const wbsSource = baseDatosData?.catalogos?.wbs || baseDatosData?.nodos_wbs_estructura || [];
+        wbsSource.forEach(row => {
+            const code = row.codigo || row.wbs_codigo || row.wbs;
+            if (definitions[code]) {
+                definitions[code].pv = Number(row.pv_acumulado_pen || row.pv_pen || row.pv || 0);
+                if (row.nombre) definitions[code].name = row.nombre;
             }
         });
 
