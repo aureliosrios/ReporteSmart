@@ -186,3 +186,9 @@ function probarConexion() {
     Logger.log("❌ No se pudo conectar a la hoja de cálculo.");
   }
 }
+
+// Función sin try-catch para forzar la ventana emergente de permisos de Google
+function forzarAutorizacion() {
+  var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1nlN-U7iJFBlGNS-q0xBxSzJWSDI2uMr_dCZ2eU6W3hE/edit");
+  Logger.log("✅ Documento abierto con éxito: " + ss.getName());
+}
