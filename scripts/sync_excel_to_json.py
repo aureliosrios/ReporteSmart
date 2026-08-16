@@ -108,7 +108,7 @@ def sync():
     
     with open('data/base_datos_reportabilidad.json', 'w', encoding='utf-8') as f:
         json.dump(base_json, f, indent=2, ensure_ascii=False)
-    print("✅ data/base_datos_reportabilidad.json sincronizado correctamente.")
+    print("[OK] data/base_datos_reportabilidad.json sincronizado correctamente.")
     
     # 5. Actualizar base_datos_master_sheets.json
     try:
@@ -121,7 +121,7 @@ def sync():
     
     with open('data/base_datos_master_sheets.json', 'w', encoding='utf-8') as f:
         json.dump(master_json, f, indent=2, ensure_ascii=False)
-    print("✅ data/base_datos_master_sheets.json sincronizado correctamente.")
+    print("[OK] data/base_datos_master_sheets.json sincronizado correctamente.")
 
 if __name__ == '__main__':
     sync()
