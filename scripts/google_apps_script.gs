@@ -6,8 +6,7 @@
 
 var TAB_NAME_LOGS = "04_LOG_FIELD_ENTRIES";
 
-// Si abres Apps Script desde tu Google Sheet (Extensiones > Apps Script), déjalo en null.
-var SPREADSHEET_ID_OR_URL = "https://docs.google.com/spreadsheets/d/1nlN-U7iJFBlGNS-q0xBxSzJWSDI2uMr_dCZ2eU6W3hE/edit";
+var SPREADSHEET_ID_OR_URL = null;
 
 function getSpreadsheet() {
   try {
