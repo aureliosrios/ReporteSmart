@@ -242,7 +242,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('rows-almacenero-only')) setupAlmaceneroPortal();
         if (document.getElementById('rows-admin-only')) setupAdminPortal();
         if (document.getElementById('rows-campo-only')) setupCampoPortal();
-        if (document.getElementById('tbody-wbs-evm')) updateDashboardViews();
+        if (document.getElementById('tbody-wbs-evm')) {
+            setupDashboardCorteControl();
+            updateDashboardViews();
+        }
+    }
+
+    function setupDashboardCorteControl() {
+        const inputCorte = document.getElementById('dash-fecha-corte');
+        const btnHoy = document.getElementById('btn-hoy-corte');
+        if (!inputCorte) return;
+
+        // Obtener fechas reales de los registros
+        const evLogs = dbLogs.filter(l => l.tipo === 'EV_PRODUCCION' && l.fecha);
+        const acLogs = dbLogs.filter(l => ['AC_MO','AC_MAT','AC_EQP','AC_SUB'].includes(l.tipo) && l.fecha);
+        const fechasReales = [...new Set([...evLogs, ...acLogs].map(l => l.fecha))].sort();
+
+        const defaultDate = fechasReales.length > 0 ? fechasReales[fechasReales.length - 1] : new Date().toISOString().split('T')[0];
+        inputCorte.value = defaultDate;
+
+        inputCorte.addEventListener('change', () => {
+            updateDashboardViews();
+        });
+
+        if (btnHoy) {
+            btnHoy.addEventListener('click', () => {
+                inputCorte.value = fechasReales.length > 0 ? fechasReales[fechasReales.length - 1] : new Date().toISOString().split('T')[0];
+                updateDashboardViews();
+            });
+        }
     }
 
     function buildResourceMaps() {
@@ -625,7 +653,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. DASHBOARD RO Y CUANTIFICACIÓN POR WBS ---
     function updateDashboardViews() {
-        const evm = calculateEVMByWBS();
+        const inputCorte = document.getElementById('dash-fecha-corte');
+        const fechaCorte = inputCorte ? inputCorte.value : null;
+        const evm = calculateEVMByWBS(fechaCorte);
 
         document.getElementById('dash-pv').textContent = `S/ ${evm.totalPV.toLocaleString('es-PE', {minimumFractionDigits:2})}`;
         document.getElementById('dash-ev').textContent = `S/ ${evm.totalEV.toLocaleString('es-PE', {minimumFractionDigits:2})}`;
@@ -680,11 +710,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 tbodyWBS.appendChild(tr);
             });
         }
-        renderSCurve(evm);
+        renderSCurve(evm, fechaCorte);
     }
 
-    function calculateEVMByWBS() {
+    function calculateEVMByWBS(fechaCorte) {
         const wbsDefinitions = buildWBSBaseline();
+
+        // Encontrar la fecha de inicio del proyecto (primer registro disponible)
+        const evLogsAll = dbLogs.filter(l => l.tipo === 'EV_PRODUCCION' && l.fecha);
+        const acLogsAll = dbLogs.filter(l => ['AC_MO','AC_MAT','AC_EQP','AC_SUB'].includes(l.tipo) && l.fecha);
+        const fechasReales = [...new Set([...evLogsAll, ...acLogsAll].map(l => l.fecha))].sort();
+        const fechaInicioStr = fechasReales.length > 0 ? fechasReales[0] : new Date().toISOString().split('T')[0];
+
+        // Días transcurridos hasta la fecha de corte
+        const corteDateStr = fechaCorte || (fechasReales.length > 0 ? fechasReales[fechasReales.length - 1] : new Date().toISOString().split('T')[0]);
+        const inicioDate = new Date(fechaInicioStr + 'T00:00:00');
+        const corteDate = new Date(corteDateStr + 'T00:00:00');
+        const diffTime = corteDate - inicioDate;
+        const t = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1);
+        const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
 
         const wbsResMap = {};
         let totalBAC = 0, totalPV = 0, totalEV = 0, totalAC = 0;
@@ -692,13 +736,18 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.keys(wbsDefinitions).forEach(code => {
             const def = wbsDefinitions[code];
             totalBAC += def.bac;
+
+            // Calcular PV acumulado lineal para este WBS hasta la fecha de corte
+            const pvWBS = (def.bac / duracionDias) * t;
+            def.pv = Math.max(0, Math.min(def.bac, pvWBS));
             totalPV += def.pv;
 
-            const logsMO = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MO");
-            const logsMAT = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MAT");
-            const logsEQP = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_EQP");
-            const logsSUB = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_SUB");
-            const logsEV = dbLogs.filter(l => l.wbs === code && l.tipo === "EV_PRODUCCION");
+            // Filtrar logs de costos y producción para este WBS que estén en el rango (inicio hasta fecha de corte)
+            const logsMO = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MO" && l.fecha && l.fecha <= corteDateStr);
+            const logsMAT = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MAT" && l.fecha && l.fecha <= corteDateStr);
+            const logsEQP = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_EQP" && l.fecha && l.fecha <= corteDateStr);
+            const logsSUB = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_SUB" && l.fecha && l.fecha <= corteDateStr);
+            const logsEV = dbLogs.filter(l => l.wbs === code && l.tipo === "EV_PRODUCCION" && l.fecha && l.fecha <= corteDateStr);
 
             const acMO = logsMO.reduce((sum, l) => sum + l.costo, 0);
             const acMAT = logsMAT.reduce((sum, l) => sum + l.costo, 0);
@@ -807,7 +856,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. CURVA S: PV acumulado, EV acumulado, AC acumulado por fecha ---
     let sCurveChartInstance = null;
 
-    function renderSCurve(evm) {
+    function renderSCurve(evm, fechaCorte) {
         const canvas = document.getElementById('chart-scurve');
         const noDataDiv = document.getElementById('scurve-no-data');
         if (!canvas) return;
@@ -834,7 +883,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Obtener la fecha de inicio del proyecto (primer registro) y fin de proyecto teórica
         const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
         const fechaInicioStr = fechasReales[0];
-        const fechaUltimoRegistro = fechasReales[fechasReales.length - 1];
+        const fechaLimite = fechaCorte || fechasReales[fechasReales.length - 1];
 
         // Generar el rango completo de fechas de la obra (ej. 60 días)
         const fechasProyecto = [];
@@ -870,8 +919,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cumPV += pvDiario;
             dataPV.push(parseFloat(cumPV.toFixed(2)));
 
-            // Solo acumular y graficar EV y AC hasta el último día que ha reportado campo real
-            if (f <= fechaUltimoRegistro) {
+            // Solo acumular y graficar EV y AC hasta la fecha límite seleccionada
+            if (f <= fechaLimite) {
                 cumEV += evPorFecha[f];
                 cumAC += acPorFecha[f];
                 dataEV.push(parseFloat(cumEV.toFixed(2)));
