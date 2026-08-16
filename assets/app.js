@@ -200,6 +200,36 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn("Base operativa no disponible; se usan los logs locales:", err);
         }
 
+        // Sincronización en tiempo real desde Google Sheets (si está disponible)
+        try {
+            const sheetResp = await fetch(API_ENDPOINT);
+            if (sheetResp.ok) {
+                const sheetData = await sheetResp.json();
+                if (sheetData && sheetData.status === 'SUCCESS' && Array.isArray(sheetData.logs)) {
+                    // Convertir los registros de Google Sheets al formato esperado del cliente
+                    const remoteLogs = sheetData.logs.map(row => ({
+                        id: row.id,
+                        fecha: row.fecha,
+                        rol: row.rol,
+                        wbs: row.wbs,
+                        codigoRecurso: row.codigoRecurso,
+                        detalle: row.detalle,
+                        cantidad: Number(row.cantidad) || 0,
+                        unidad: row.unidad,
+                        pu: Number(row.pu) || 0,
+                        costo: Number(row.costo) || 0,
+                        tipo: row.tipo,
+                        origen_html: row.origen_html
+                    }));
+                    dbLogs = mergeLogs(dbLogs, remoteLogs);
+                    localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
+                    console.log(`✅ Sincronizados ${remoteLogs.length} registros en tiempo real desde Google Sheets.`);
+                }
+            }
+        } catch (err) {
+            console.warn("No se pudo obtener datos en tiempo real desde Google Sheets:", err);
+        }
+
         buildResourceMaps();
 
         if (document.getElementById('rows-tareador-only')) setupTareadorPortal();

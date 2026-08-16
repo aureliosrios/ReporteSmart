@@ -150,14 +150,60 @@ function doPost(e) {
 
 function doGet(e) {
   try {
+    var ss = getSpreadsheet();
+    if (!ss) {
+      return responseJSON({ status: "ERROR", message: "No se pudo acceder a la hoja de cálculo." });
+    }
+
+    var sheet = ss.getSheetByName(TAB_NAME_LOGS);
+    var logsData = [];
+    
+    if (sheet) {
+      var lastRow = sheet.getLastRow();
+      if (lastRow >= 2) {
+        var range = sheet.getRange(2, 1, lastRow - 1, 12); // Leer las 12 columnas (A a L)
+        var values = range.getValues();
+        
+        for (var i = 0; i < values.length; i++) {
+          var row = values[i];
+          
+          // Saltar filas completamente vacías
+          if (!row[0] && !row[4]) continue;
+
+          // Formatear fechas
+          var fechaVal = row[1];
+          if (fechaVal instanceof Date) {
+            fechaVal = Utilities.formatDate(fechaVal, Session.getScriptTimeZone(), "yyyy-MM-dd");
+          } else if (fechaVal) {
+            fechaVal = String(fechaVal).split("T")[0];
+          }
+
+          logsData.push({
+            id: String(row[0] || ""),
+            fecha: String(fechaVal || ""),
+            rol: String(row[2] || ""),
+            wbs: String(row[3] || ""),
+            codigoRecurso: String(row[4] || ""),
+            detalle: String(row[5] || ""),
+            cantidad: Number(row[6]) || 0,
+            unidad: String(row[7] || ""),
+            pu: Number(row[8]) || 0,
+            costo: Number(row[9]) || 0,
+            tipo: String(row[10] || ""),
+            origen_html: String(row[11] || "")
+          });
+        }
+      }
+    }
+
     return responseJSON({
-      status: "ONLINE",
+      status: "SUCCESS",
       version: "1.0.3",
       proyecto: "Redes Sanitarias de Agua Potable y Alcantarillado",
-      pestana_destino: TAB_NAME_LOGS,
-      github_pages: "https://aureliosrios.github.io/ReporteSmart/",
+      logs: logsData,
       timestamp: new Date().toISOString()
     });
+
   } catch (error) {
     return responseJSON({
       status: "ERROR",
