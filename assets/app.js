@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let presupuestoData = DEFAULT_PRESUPUESTO_DATA;
     let baseDatosData = null;
     let dbLogs = readLocalLogs();
+    let dbConsolidado = [];
 
     let moMap = {};
     let matMap = {};
@@ -228,6 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         origen_html: row.origen_html
                     }));
                     dbLogs = mergeLogs(dbLogs, remoteLogs);
+                    if (Array.isArray(sheetData.consolidado)) {
+                        dbConsolidado = sheetData.consolidado;
+                        console.log(`✅ Sincronizados ${dbConsolidado.length} registros consolidados (03_CONSOLIDADO_DIARIO_EVM_WBS) desde Google Sheets.`);
+                    }
                     localStorage.setItem('ro_unified_logs', JSON.stringify(dbLogs));
                     console.log(`✅ Sincronizados ${remoteLogs.length} registros en tiempo real desde Google Sheets.`);
                 }
@@ -733,40 +738,81 @@ document.addEventListener('DOMContentLoaded', () => {
         const wbsResMap = {};
         let totalBAC = 0, totalPV = 0, totalEV = 0, totalAC = 0;
 
-        Object.keys(wbsDefinitions).forEach(code => {
-            const def = wbsDefinitions[code];
-            totalBAC += def.bac;
+        // Intentar usar los datos reales consolidados de la pestaña 03 del Google Sheet si están disponibles
+        const consFiltrado = dbConsolidado.filter(c => c.fecha === corteDateStr);
+        const usarSheetConsolidado = consFiltrado.length > 0;
 
-            // Calcular PV acumulado lineal para este WBS hasta la fecha de corte
-            const pvWBS = (def.bac / duracionDias) * t;
-            def.pv = Math.max(0, Math.min(def.bac, pvWBS));
-            totalPV += def.pv;
+        if (usarSheetConsolidado) {
+            console.log(`📊 Usando datos consolidados reales de Google Sheets para la fecha de corte: ${corteDateStr}`);
+            consFiltrado.forEach(c => {
+                const code = c.wbs;
+                const def = wbsDefinitions[code] || { name: c.descripcion || code };
+                
+                const bac = c.bac || 0;
+                const pv = c.pv_acumulado || 0;
+                const ev = c.ev_acumulado || 0;
+                const ac = c.ac_acumulado || 0;
+                const dif = c.variacion || (ev - ac);
 
-            // Filtrar logs de costos y producción para este WBS que estén en el rango (inicio hasta fecha de corte)
-            const logsMO = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MO" && l.fecha && l.fecha <= corteDateStr);
-            const logsMAT = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MAT" && l.fecha && l.fecha <= corteDateStr);
-            const logsEQP = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_EQP" && l.fecha && l.fecha <= corteDateStr);
-            const logsSUB = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_SUB" && l.fecha && l.fecha <= corteDateStr);
-            const logsEV = dbLogs.filter(l => l.wbs === code && l.tipo === "EV_PRODUCCION" && l.fecha && l.fecha <= corteDateStr);
+                const cpi = ac > 0 ? ev / ac : 1.0;
+                const spi = pv > 0 ? ev / pv : 1.0;
+                const eac = cpi > 0 ? ac + (bac - ev) / cpi : bac;
 
-            const acMO = logsMO.reduce((sum, l) => sum + l.costo, 0);
-            const acMAT = logsMAT.reduce((sum, l) => sum + l.costo, 0);
-            const acEQP = logsEQP.reduce((sum, l) => sum + l.costo, 0);
-            const acSUB = logsSUB.reduce((sum, l) => sum + l.costo, 0);
+                totalBAC += bac;
+                totalPV += pv;
+                totalEV += ev;
+                totalAC += ac;
 
-            const acTotal = acMO + acMAT + acEQP + acSUB;
-            const evTotal = logsEV.reduce((sum, l) => sum + l.costo, 0);
+                // Calcular desglose de costos AC por componente de forma retroactiva para la Tabla 1
+                const logsMO = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MO" && l.fecha && l.fecha <= corteDateStr);
+                const logsMAT = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MAT" && l.fecha && l.fecha <= corteDateStr);
+                const logsEQP = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_EQP" && l.fecha && l.fecha <= corteDateStr);
+                const logsSUB = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_SUB" && l.fecha && l.fecha <= corteDateStr);
 
-            totalAC += acTotal;
-            totalEV += evTotal;
+                const acMO = logsMO.reduce((sum, l) => sum + (l.costo || 0), 0);
+                const acMAT = logsMAT.reduce((sum, l) => sum + (l.costo || 0), 0);
+                const acEQP = logsEQP.reduce((sum, l) => sum + (l.costo || 0), 0);
+                const acSUB = logsSUB.reduce((sum, l) => sum + (l.costo || 0), 0);
 
-            const cpi = acTotal > 0 ? evTotal / acTotal : 1.0;
-            const spi = def.pv > 0 ? evTotal / def.pv : 1.0;
-            const eac = cpi > 0 ? acTotal + (def.bac - evTotal) / cpi : def.bac;
-            const dif = evTotal - acTotal;
+                wbsResMap[code] = { code, name: def.name, bac, pv, ev, ac, acMO, acMAT, acEQP, acSUB, dif, cpi, spi, eac };
+            });
+        } else {
+            // FALLBACK LOCAL: Si está offline o no hay registros para esta fecha en la pestaña 03
+            Object.keys(wbsDefinitions).forEach(code => {
+                const def = wbsDefinitions[code];
+                totalBAC += def.bac;
 
-            wbsResMap[code] = { code, name: def.name, bac: def.bac, pv: def.pv, ev: evTotal, ac: acTotal, acMO, acMAT, acEQP, acSUB, dif, cpi, spi, eac };
-        });
+                // Calcular PV acumulado lineal para este WBS hasta la fecha de corte
+                const pvWBS = (def.bac / duracionDias) * t;
+                def.pv = Math.max(0, Math.min(def.bac, pvWBS));
+                totalPV += def.pv;
+
+                // Filtrar logs de costos y producción para este WBS que estén en el rango (inicio hasta fecha de corte)
+                const logsMO = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MO" && l.fecha && l.fecha <= corteDateStr);
+                const logsMAT = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_MAT" && l.fecha && l.fecha <= corteDateStr);
+                const logsEQP = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_EQP" && l.fecha && l.fecha <= corteDateStr);
+                const logsSUB = dbLogs.filter(l => l.wbs === code && l.tipo === "AC_SUB" && l.fecha && l.fecha <= corteDateStr);
+                const logsEV = dbLogs.filter(l => l.wbs === code && l.tipo === "EV_PRODUCCION" && l.fecha && l.fecha <= corteDateStr);
+
+                const acMO = logsMO.reduce((sum, l) => sum + l.costo, 0);
+                const acMAT = logsMAT.reduce((sum, l) => sum + l.costo, 0);
+                const acEQP = logsEQP.reduce((sum, l) => sum + l.costo, 0);
+                const acSUB = logsSUB.reduce((sum, l) => sum + l.costo, 0);
+
+                const acTotal = acMO + acMAT + acEQP + acSUB;
+                const evTotal = logsEV.reduce((sum, l) => sum + l.costo, 0);
+
+                totalAC += acTotal;
+                totalEV += evTotal;
+
+                const cpi = acTotal > 0 ? evTotal / acTotal : 1.0;
+                const spi = def.pv > 0 ? evTotal / def.pv : 1.0;
+                const eac = cpi > 0 ? acTotal + (def.bac - evTotal) / cpi : def.bac;
+                const dif = evTotal - acTotal;
+
+                wbsResMap[code] = { code, name: def.name, bac: def.bac, pv: def.pv, ev: evTotal, ac: acTotal, acMO, acMAT, acEQP, acSUB, dif, cpi, spi, eac };
+            });
+        }
 
         const cpiGlobal = totalAC > 0 ? totalEV / totalAC : 1.0;
         const spiGlobal = totalPV > 0 ? totalEV / totalPV : 1.0;
@@ -883,47 +929,75 @@ document.addEventListener('DOMContentLoaded', () => {
         const fechaInicioStr = fechasReales[0];
         const fechaLimite = fechaCorte || fechasReales[fechasReales.length - 1];
 
-        const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
-        const totalPV = evm.totalBAC;
-
-        // Generar el rango completo de fechas del proyecto (ej. 60 días) para proyectar todo el PV
-        const fechasProyecto = [];
-        const inicioDate = new Date(fechaInicioStr + 'T00:00:00');
-        for (let i = 0; i < duracionDias; i++) {
-            const d = new Date(inicioDate);
-            d.setDate(inicioDate.getDate() + i);
-            const yyyy = d.getFullYear();
-            const mm = String(d.getMonth() + 1).padStart(2, '0');
-            const dd = String(d.getDate()).padStart(2, '0');
-            fechasProyecto.push(`${yyyy}-${mm}-${dd}`);
-        }
-
-        // Acumular series basándose en el rango completo del proyecto
         const labelsDates = [];
         const dataPV = [], dataEV = [], dataAC = [];
 
-        fechasProyecto.forEach((f, i) => {
-            // PV acumulado lineal para el día i + 1
-            const pvAcumulado = Math.min(totalPV, (totalPV / duracionDias) * (i + 1));
-            dataPV.push(parseFloat(pvAcumulado.toFixed(2)));
+        const usarSheetConsolidado = dbConsolidado.length > 0;
 
-            // Solo graficar EV y AC hasta la fecha límite seleccionada (fecha de corte)
-            if (f <= fechaLimite) {
-                // Acumular todos los registros reales de forma retroactiva hasta la fecha f
-                const evHastaFecha = evLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
-                const acHastaFecha = acLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
-                dataEV.push(parseFloat(evHastaFecha.toFixed(2)));
-                dataAC.push(parseFloat(acHastaFecha.toFixed(2)));
-            } else {
-                // null en Chart.js corta la línea para indicar el periodo restante/futuro
-                dataEV.push(null);
-                dataAC.push(null);
+        if (usarSheetConsolidado) {
+            // Obtener todas las fechas del consolidado del Google Sheet ordenadas
+            const fechasProyecto = [...new Set(dbConsolidado.map(c => c.fecha))].sort();
+
+            fechasProyecto.forEach((f) => {
+                // Sumar el PV acumulado de todas las WBS para la fecha f
+                const pvCons = dbConsolidado.filter(c => c.fecha === f).reduce((sum, c) => sum + (c.pv_acumulado || 0), 0);
+                dataPV.push(parseFloat(pvCons.toFixed(2)));
+
+                // Solo graficar EV y AC hasta la fecha límite seleccionada (fecha de corte)
+                if (f <= fechaLimite) {
+                    const evCons = dbConsolidado.filter(c => c.fecha === f).reduce((sum, c) => sum + (c.ev_acumulado || 0), 0);
+                    const acCons = dbConsolidado.filter(c => c.fecha === f).reduce((sum, c) => sum + (c.ac_acumulado || 0), 0);
+                    dataEV.push(parseFloat(evCons.toFixed(2)));
+                    dataAC.push(parseFloat(acCons.toFixed(2)));
+                } else {
+                    dataEV.push(null);
+                    dataAC.push(null);
+                }
+
+                // Formatear la etiqueta de fecha (YYYY-MM-DD -> DD/MM)
+                const parts = f.split('-');
+                labelsDates.push(parts.length === 3 ? `${parts[2]}/${parts[1]}` : f);
+            });
+        } else {
+            // FALLBACK LOCAL: Si está offline
+            const duracionDias = presupuestoData.proyecto?.duracion_dias_calendario || 60;
+            const totalPV = evm.totalBAC;
+
+            // Generar el rango completo de fechas del proyecto (ej. 60 días) para proyectar todo el PV
+            const fechasProyecto = [];
+            const inicioDate = new Date(fechaInicioStr + 'T00:00:00');
+            for (let i = 0; i < duracionDias; i++) {
+                const d = new Date(inicioDate);
+                d.setDate(inicioDate.getDate() + i);
+                const yyyy = d.getFullYear();
+                const mm = String(d.getMonth() + 1).padStart(2, '0');
+                const dd = String(d.getDate()).padStart(2, '0');
+                fechasProyecto.push(`${yyyy}-${mm}-${dd}`);
             }
 
-            // Formatear la etiqueta de fecha (YYYY-MM-DD -> DD/MM)
-            const parts = f.split('-');
-            labelsDates.push(parts.length === 3 ? `${parts[2]}/${parts[1]}` : f);
-        });
+            fechasProyecto.forEach((f, i) => {
+                // PV acumulado lineal para el día i + 1
+                const pvAcumulado = Math.min(totalPV, (totalPV / duracionDias) * (i + 1));
+                dataPV.push(parseFloat(pvAcumulado.toFixed(2)));
+
+                // Solo graficar EV y AC hasta la fecha límite seleccionada (fecha de corte)
+                if (f <= fechaLimite) {
+                    // Acumular todos los registros reales de forma retroactiva hasta la fecha f
+                    const evHastaFecha = evLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
+                    const acHastaFecha = acLogs.filter(l => l.fecha <= f).reduce((sum, l) => sum + (l.costo || 0), 0);
+                    dataEV.push(parseFloat(evHastaFecha.toFixed(2)));
+                    dataAC.push(parseFloat(acHastaFecha.toFixed(2)));
+                } else {
+                    // null en Chart.js corta la línea para indicar el periodo restante/futuro
+                    dataEV.push(null);
+                    dataAC.push(null);
+                }
+
+                // Formatear la etiqueta de fecha (YYYY-MM-DD -> DD/MM)
+                const parts = f.split('-');
+                labelsDates.push(parts.length === 3 ? `${parts[2]}/${parts[1]}` : f);
+            });
+        }
 
         // Destruir instancia anterior si existe
         if (sCurveChartInstance) {

@@ -155,22 +155,19 @@ function doGet(e) {
       return responseJSON({ status: "ERROR", message: "No se pudo acceder a la hoja de cálculo." });
     }
 
-    var sheet = ss.getSheetByName(TAB_NAME_LOGS);
+    var sheetLogs = ss.getSheetByName(TAB_NAME_LOGS);
     var logsData = [];
     
-    if (sheet) {
-      var lastRow = sheet.getLastRow();
-      if (lastRow >= 2) {
-        var range = sheet.getRange(2, 1, lastRow - 1, 12); // Leer las 12 columnas (A a L)
-        var values = range.getValues();
+    if (sheetLogs) {
+      var lastRowLogs = sheetLogs.getLastRow();
+      if (lastRowLogs >= 2) {
+        var rangeLogs = sheetLogs.getRange(2, 1, lastRowLogs - 1, 12); // Leer las 12 columnas (A a L)
+        var valuesLogs = rangeLogs.getValues();
         
-        for (var i = 0; i < values.length; i++) {
-          var row = values[i];
-          
-          // Saltar filas completamente vacías
+        for (var i = 0; i < valuesLogs.length; i++) {
+          var row = valuesLogs[i];
           if (!row[0] && !row[4]) continue;
 
-          // Formatear fechas
           var fechaVal = row[1];
           if (fechaVal instanceof Date) {
             fechaVal = Utilities.formatDate(fechaVal, Session.getScriptTimeZone(), "yyyy-MM-dd");
@@ -196,11 +193,50 @@ function doGet(e) {
       }
     }
 
+    // LEER CONSOLIDADO DE EVM POR WBS (PESTAÑA 03)
+    var consolidadoData = [];
+    var sheetConsolidado = ss.getSheetByName("03_CONSOLIDADO_DIARIO_EVM_WBS");
+    if (sheetConsolidado) {
+      var lastRowCons = sheetConsolidado.getLastRow();
+      if (lastRowCons >= 2) {
+        var rangeCons = sheetConsolidado.getRange(2, 1, lastRowCons - 1, 12); // Leer las 12 columnas (A a L)
+        var valuesCons = rangeCons.getValues();
+        
+        for (var j = 0; j < valuesCons.length; j++) {
+          var rowC = valuesCons[j];
+          if (!rowC[1] || !rowC[2]) continue; // Necesita fecha y WBS
+
+          var fechaCVal = rowC[1];
+          if (fechaCVal instanceof Date) {
+            fechaCVal = Utilities.formatDate(fechaCVal, Session.getScriptTimeZone(), "yyyy-MM-dd");
+          } else if (fechaCVal) {
+            fechaCVal = String(fechaCVal).split("T")[0];
+          }
+
+          consolidadoData.push({
+            dia: Number(rowC[0]) || 0,
+            fecha: String(fechaCVal || ""),
+            wbs: String(rowC[2] || ""),
+            descripcion: String(rowC[3] || ""),
+            bac: Number(rowC[4]) || 0,
+            pv_diario: Number(rowC[5]) || 0,
+            pv_acumulado: Number(rowC[6]) || 0,
+            ev_diario: Number(rowC[7]) || 0,
+            ev_acumulado: Number(rowC[8]) || 0,
+            ac_diario: Number(rowC[9]) || 0,
+            ac_acumulado: Number(rowC[10]) || 0,
+            variacion: Number(rowC[11]) || 0
+          });
+        }
+      }
+    }
+
     return responseJSON({
       status: "SUCCESS",
-      version: "1.0.3",
+      version: "1.1.0",
       proyecto: "Redes Sanitarias de Agua Potable y Alcantarillado",
       logs: logsData,
+      consolidado: consolidadoData,
       timestamp: new Date().toISOString()
     });
 
