@@ -170,3 +170,19 @@ function responseJSON(data) {
   return ContentService.createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
 }
+
+// Función de prueba directa para autorizar permisos de Google Sheets
+function probarConexion() {
+  var ss = getSpreadsheet();
+  if (ss) {
+    Logger.log("✅ Conexión exitosa al Google Sheet: " + ss.getName());
+    var sheet = ss.getSheetByName(TAB_NAME_LOGS);
+    if (sheet) {
+      Logger.log("✅ Pestaña encontrada: " + TAB_NAME_LOGS + " con " + sheet.getLastRow() + " filas.");
+    } else {
+      Logger.log("⚠️ La pestaña " + TAB_NAME_LOGS + " no existe aún (se creará automáticamente).");
+    }
+  } else {
+    Logger.log("❌ No se pudo conectar a la hoja de cálculo.");
+  }
+}
